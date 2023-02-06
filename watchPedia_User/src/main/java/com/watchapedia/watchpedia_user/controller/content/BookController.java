@@ -2,18 +2,17 @@ package com.watchapedia.watchpedia_user.controller.content;
 
 
 import com.watchapedia.watchpedia_user.model.dto.UserSessionDto;
-import com.watchapedia.watchpedia_user.model.dto.content.WebtoonDto;
+import com.watchapedia.watchpedia_user.model.dto.content.BookDto;
 import com.watchapedia.watchpedia_user.model.entity.content.ajax.Star;
 import com.watchapedia.watchpedia_user.model.network.response.PersonResponse;
 import com.watchapedia.watchpedia_user.model.network.response.comment.CommentResponse;
+import com.watchapedia.watchpedia_user.model.network.response.content.BookResponse;
 import com.watchapedia.watchpedia_user.model.network.response.content.StarResponse;
-import com.watchapedia.watchpedia_user.model.network.response.content.TvResponse;
-import com.watchapedia.watchpedia_user.model.network.response.content.WebtoonResponse;
 import com.watchapedia.watchpedia_user.model.repository.UserRepository;
 import com.watchapedia.watchpedia_user.model.repository.comment.CommentRepository;
 import com.watchapedia.watchpedia_user.service.PersonService;
 import com.watchapedia.watchpedia_user.service.comment.CommentService;
-import com.watchapedia.watchpedia_user.service.content.WebtoonService;
+import com.watchapedia.watchpedia_user.service.content.BookService;
 import com.watchapedia.watchpedia_user.service.content.ajax.HateService;
 import com.watchapedia.watchpedia_user.service.content.ajax.StarService;
 import com.watchapedia.watchpedia_user.service.content.ajax.WatchService;
@@ -33,11 +32,11 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@RequestMapping("/webtoon")
+@RequestMapping("/book")
 @RequiredArgsConstructor
-public class WebtoonController {
+public class BookController {
     final StarService starService;
-    final WebtoonService webtoonService;
+    final BookService bookService;
     final PersonService personService;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
@@ -47,40 +46,40 @@ public class WebtoonController {
     private final CommentService commentService;
 
     @GetMapping(path="/main")
-    public String webtoon(
+    public String book(
             ModelMap map
     ){
-        List<WebtoonDto> webtoons = webtoonService.webtoons();
-        map.addAttribute("webtoons", webtoons);
-        return "/webtoon/webtoonMain";
+        List<BookDto> books = bookService.books();
+        map.addAttribute("books", books);
+        return "/book/bookMain";
     }
 
-    @GetMapping("/{webIdx}") // http://localhost:8080/movie/1
-    public String webtoonDetail(
-            @PathVariable Long webIdx,
+    @GetMapping("/{bookIdx}") // http://localhost:8080/movie/1
+    public String bookDetail(
+            @PathVariable Long bookIdx,
             @PageableDefault(size = 5, sort = "commIdx", direction = Sort.Direction.DESC) Pageable pageable,
             ModelMap map,
             HttpSession session
     ){
         UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
 
-        WebtoonResponse webtoon = webtoonService.webtoonView(webIdx);
+        BookResponse book = bookService.bookView(bookIdx);
 
 //      평균 별점
         double sum = 0;
         double avgStar = 0;
-        if(webtoon.starList().size() == 1){
-            avgStar = webtoon.starList().get(0).getStarPoint();
-        }else if(webtoon.starList().size() > 0){
-            for(int i=0; i<webtoon.starList().size(); i++){
-                sum += webtoon.starList().get(i).getStarPoint();
+        if(book.starList().size() == 1){
+            avgStar = book.starList().get(0).getStarPoint();
+        }else if(book.starList().size() > 0){
+            for(int i=0; i<book.starList().size(); i++){
+                sum += book.starList().get(i).getStarPoint();
             }
-            avgStar = Math.round((sum / webtoon.starList().size()) * 10.0) / 10.0;
+            avgStar = Math.round((sum / book.starList().size()) * 10.0) / 10.0;
         }
         StarResponse hasStar = null;
         if (dto != null) {
 //        해당 유저가 별점을 매겼는지
-            hasStar = starService.findStar("webtoon", webtoon.idx(), dto.userIdx());
+            hasStar = starService.findStar("book", book.idx(), dto.userIdx());
         }
 
 //        인물 리스트
@@ -88,8 +87,8 @@ public class WebtoonController {
 
         List<String> people = new ArrayList<>();
         List<PersonResponse> personList = new ArrayList<>();
-        if(webtoon.people() != null){
-            peopleList = List.of(webtoon.people().split(","));
+        if(book.people() != null){
+            peopleList = List.of(book.people().split(","));
             for(String per : peopleList){
                 people.add(per.split("\\(")[0] + "," + per.split("\\(")[1].split("\\)")[0]);
             }
@@ -104,7 +103,7 @@ public class WebtoonController {
         boolean hasWish = false;
         boolean hasWatch = false;
         boolean hasHate = false;
-        Page<CommentResponse> commentList = commentService.commentList("webtoon", webtoon.idx(), dto != null ? dto.userIdx() : null, pageable);
+        Page<CommentResponse> commentList = commentService.commentList("book", book.idx(), dto != null ? dto.userIdx() : null, pageable);
         if (dto != null) {
             for (CommentResponse comm : commentList) {
                 if (comm.user().getUserIdx() == dto.userIdx()) {
@@ -112,17 +111,17 @@ public class WebtoonController {
                 }
             }
 
-            hasWish = wishService.findWish("webtoon", webtoon.idx(), dto.userIdx());
-            hasWatch = watchService.findWatch("webtoon", webtoon.idx(), dto.userIdx());
-            hasHate = hateService.findHate(dto.userIdx(), "webtoon", webtoon.idx());
+            hasWish = wishService.findWish("book", book.idx(), dto.userIdx());
+            hasWatch = watchService.findWatch("book", book.idx(), dto.userIdx());
+            hasHate = hateService.findHate(dto.userIdx(), "book", book.idx());
         }
 //        별점 그래프
         HashMap<Long, Integer> starGraph = new HashMap<Long,Integer>(){{
             put(1L,0);put(2L,0);put(3L,0);put(4L,0);put(5L,0);
         }};
-        if(webtoon.starList().size() > 0){
-            int graphPx = 88 / webtoon.starList().size();
-            for(Star star : webtoon.starList()){
+        if(book.starList().size() > 0){
+            int graphPx = 88 / book.starList().size();
+            for(Star star : book.starList()){
                 for(Long i=1L; i<=5L; i++){
                     if(star.getStarPoint() == i){
                         starGraph.put(i,starGraph.get(i) + graphPx);
@@ -133,9 +132,9 @@ public class WebtoonController {
         Long bigStar = starGraph.entrySet().stream().max((m1, m2) -> m1.getValue() > m2.getValue() ? 1 : -1).get().getKey();
 
 //        비슷한 장르 영화
-        List<WebtoonResponse> similarGenre = webtoonService.similarGenre(webtoon.genre(), webtoon.idx());
+        List<BookResponse> similarGenre = bookService.similarGenre(book.category(), book.idx());
 
-        map.addAttribute("webtoon", webtoon);
+        map.addAttribute("book", book);
         map.addAttribute("avg", avgStar);
         map.addAttribute("people", personList);
         map.addAttribute("comment", commentList);
@@ -148,22 +147,22 @@ public class WebtoonController {
         map.addAttribute("bigStar", bigStar);
         map.addAttribute("userSession", dto);
         map.addAttribute("similarGenre", similarGenre);
-        return "/webtoon/webtoonDetail";
+        return "/book/bookDetail";
     }
 
 
-    @GetMapping("/{webIdx}/info")
-    public String webtoonInfo(
-            @PathVariable Long webIdx,
+    @GetMapping("/{bookIdx}/info")
+    public String bookInfo(
+            @PathVariable Long bookIdx,
             ModelMap map,
             HttpSession session
     ){
         UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
-        WebtoonResponse webtoon = webtoonService.webtoonView(webIdx);
+        BookResponse book = bookService.bookView(bookIdx);
 
-        map.addAttribute("webtoon", webtoon);
+        map.addAttribute("book", book);
         map.addAttribute("userSession", dto);
-        return "/webtoon/detailInfoWebtoon";
+        return "/book/detailInfoBook";
     }
 
 

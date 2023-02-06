@@ -4,9 +4,9 @@ watch.addEventListener('click', () => {
         url: '/watch/save',
         headers: {'Content-Type': 'application/json;charset=UTF-8'},
         data: JSON.stringify({
-            contentType: "movie",
+            contentType: "book",
             contentIdx: contentIdx,
-            userIdx: loginIdx.title
+             userIdx: loginIdx.title
         }),
         type: "POST",
         dataType: "json",

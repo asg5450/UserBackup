@@ -64,7 +64,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title th:text="${tv.title} + ' - 왓챠피디아'">아바타:물의 길 (2022) - 왓챠피디아</title>
+    <title th:text="${book.title} + ' - 왓챠피디아'">아바타:물의 길 (2022) - 왓챠피디아</title>
     <meta data-rh="true" content="추천, 평가, 영화, 책, 드라마, 애니메이션" name="keywords">
     <meta data-rh="true" content="9811060e374931ab817c913e27ba9851e42122b6" name="naver-site-verification">
     <meta data-rh="true" content="website" property="og:type">
@@ -5040,7 +5040,7 @@
         .css-1o7yycy-ProfilePhotoImage {
             position: relative;
             z-index: 1;
-            background: url(https://an2-img.amz.wtchn.net/image/v2/dE54RRrvr5gUjosqISgscQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM5dFpXUnBkVzB2WkdNek9Ea3dNVEZtTW1ZeU1UWTFNRE5qTVRndWFuQm5JbjAuakhRQzBOSFFrVjFyR0NCUWdIa0NaS2J4dk8yOGFWRjZvWDNxanFpSTNaQQ) no-repeat center;
+            background: url() no-repeat center;
             background-size: cover;
             width: 100%;
             height: 100%;
@@ -7550,14 +7550,15 @@
 
     <link rel="icon" href="/image/favicon.png">
 
-    <script defer src="/js/tv/wishWatch.js"></script>
-    <script defer src="/js/tv/script.js"></script>
-    <script defer src="/js/tv/detailModal.js"></script>
-    <script defer src="/js/tv/detailStar.js"></script>
-    <script defer src="/js/tv/detailComment.js"></script>
-    <script defer src="/js/tv/detailWish.js"></script>
-    <script defer src="/js/tv/detailWatch.js"></script>
-    <script defer src="/js/tv/detailHate.js"></script>
+    <script defer src="/js/book/wishWatch.js"></script>
+    <script defer src="/js/book/script.js"></script>
+    <script defer src="/js/book/detailModal.js"></script>
+    <script defer src="/js/book/detailStar.js"></script>
+    <script defer src="/js/book/detailComment.js"></script>
+    <script defer src="/js/book/detailWish.js"></script>
+    <script defer src="/js/book/detailWatch.js"></script>
+<!--    <script defer src="/js/book/webtoonMainScroll.js"></script>-->
+    <script defer src="/js/book//detailHate.js"></script>
 
     <style>
         #loading-icon{
@@ -7705,14 +7706,12 @@
     </style>
 
 
-
-
 </head>
 <body>
 <div id="root">
     <div class="css-5jq76">
         <div class="css-1xm32e0">
-                <div th:replace="fragment/header::header"></div>
+            <div th:replace="fragment/header::header"></div>
             </header>
             <section class="css-99klbh">
                 <div class="css-7zhfhb">
@@ -7740,19 +7739,15 @@
                             <section data-rowindex="0" class="w_exposed_cell css-x864dh-Self e1svyhwg0">
                                 <div class="css-cshjoi-PosterContainer e1svyhwg1">
                                     <div class="css-oqg1df-BlurPosterBlock e1svyhwg2">
-                                        <div color="#9A7D69" class="css-mainn9-LeftBackground e1svyhwg6"></div>
-                                        <div class="css-92c08v-BlurPoster e1svyhwg4">
-                                            <div color="#9A7D69" class="css-16kdtrk-LeftGradient e1svyhwg8"></div>
-                                            <div color="#D1B99F" class="css-1x8lfzg-RightGradient e1svyhwg9"></div>
-                                        </div>
-                                        <div color="#D1B99F" class="css-194pp5q-RightBackground e1svyhwg7"></div>
-                                        <div class="css-1ubeqqm-DimmedLayer e1svyhwg3"></div>
+                                        <div class="css-1e8ou7s-LeftBackground e1svyhwg6"></div>
+                                        <div class="css-vp38c5-BlurPoster e1svyhwg4"></div>
+                                        <div class="css-1e3gzd8-RightBackground e1svyhwg7"></div>
                                     </div>
                                     <div class="css-569z5v">
                                         <div class="css-1po9d5k">
                                             <div class="css-1d6udxb">
                                                 <div class="css-11zdk8l-PosterWithRankingInfoBlock e1svyhwg10">
-                                                    <div class=" css-1np54po-StyledLazyLoadingImage ezcopuc0"><img
+                                                    <div class="  css-r8ljjg-StyledSelf e1q5rx9q0"><img
                                                             alt="아바타: 물의 길의 포스터"
                                                             src="https://an2-img.amz.wtchn.net/image/v2/FrxGEjpKFa3qoOkHXyVyLA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qZ3dlRFF3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56QTFORFkzTXpreU1ERTFNREUyTURFaWZRLkVhSThNZFJPekYyZ20wRG1lNTRsckp4aTRVdml1X0Fpa1B2MC1uMERhZTg"
                                                             class="css-qhzw1o-StyledImg ezcopuc1"></div>
@@ -7765,7 +7760,8 @@
                                                         </ul>
                                                         <h1 class="css-j40qn0-TitleOnPosterBlock e1svyhwg12">아바타: 물의
                                                             길</h1>
-                                                        <div class="css-11h0kfd-Detail e1svyhwg18">2022 ・ 액션/모험/판타지 ・
+                                                        <div class="css-11h0kfd-Detail e1svyhwg18">2022 ・ 액션/모험/판타지
+                                                            ・
                                                             미국
                                                         </div>
                                                     </div>
@@ -7778,11 +7774,12 @@
                                     <div class="css-569z5v">
                                         <div class="css-1po9d5k">
                                             <div class="css-1d6udxb">
-                                                <div class="css-13h49w0-PaneInner e1svyhwg16"><h1
-                                                        class="css-171k8ad-Title e1svyhwg17">아바타: 물의 길</h1>
+                                                <div class="css-13h49w0-PaneInner e1svyhwg16">
+                                                    <h1 class="css-171k8ad-Title e1svyhwg17">아바타: 물의 길</h1>
                                                     <div class="css-11h0kfd-Detail e1svyhwg18">2022 ・ 액션/모험/판타지 ・ 미국
                                                     </div>
-                                                    <div class="css-og1gu8-ContentRatings e1svyhwg20">평균 ★3.8 (3,363명)
+                                                    <div class="css-og1gu8-ContentRatings e1svyhwg20">평균 ★3.8
+                                                        (3,363명)
                                                     </div>
                                                     <div class="css-5qj1gb-ContentActionSection e1svyhwg19">
                                                         <div class="css-1jlb6q">
@@ -7790,104 +7787,138 @@
                                                                 <div class="css-1k5zzs9">평가하기</div>
                                                             </div>
                                                             <div id="star-div">
-                                                                  <span class="star">
-                                                                    ★★★★★
-                                                                    <span>★★★★★</span>
-                                                                    <input
-                                                                            type="range"
-                                                                            id="1"
-                                                                            min="0"
-                                                                            max="5"
-                                                                    />
-                                                                  </span>
+                                                                    <span class="star">
+                                                                        ★★★★★
+                                                                        <span>★★★★★</span>
+                                                                        <input type="range" id="1" min="0" max="5" />
+                                                                    </span>
                                                             </div>
                                                         </div>
-                                                        <div class="css-s5x9hn-ContentActionDivider e1svyhwg21"></div>
+                                                        <div class="css-s5x9hn-ContentActionDivider e1svyhwg21">
+                                                        </div>
                                                         <div class="css-1xki7ez-ButtonBlock e1svyhwg22">
-                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="wish-btn">
-                                                                <div class="Icon icPlus rotatingIcon css-1q1i623-SVG e1282e850">
+                                                            <button
+                                                                    class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23"
+                                                                    id="wish-btn">
+                                                                <div
+                                                                        class="Icon icPlus rotatingIcon css-1q1i623-SVG e1282e850">
                                                                     <div>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" class="injected-svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
                                                                              data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwLjUgMTMuMDkyOUgxMy4xNDI4VjIwLjVIMTAuODU3MVYxMy4wOTI5SDMuNVYxMC44MDcxSDEwLjg1NzFWMy41SDEzLjE0MjhWMTAuODA3MUgyMC41VjEzLjA5MjlaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg=="
                                                                              xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                            <path d="M20.5 13.0929H13.1428V20.5H10.8571V13.0929H3.5V10.8071H10.8571V3.5H13.1428V10.8071H20.5V13.0929Z"
-                                                                                  fill="currentColor"></path>
+                                                                            <path
+                                                                                    d="M20.5 13.0929H13.1428V20.5H10.8571V13.0929H3.5V10.8071H10.8571V3.5H13.1428V10.8071H20.5V13.0929Z"
+                                                                                    fill="currentColor"></path>
                                                                         </svg>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="injected-svg" data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOC41OTY5IDcuMTQ5NDFINS4yNjc2MUM1LjAxMzkgNy4xNDk0MSA0LjgwNzk4IDcuMzU1MzMgNC44MDc5OCA3LjYwOTA0VjIwLjAzNjVDNC44MDc5OCAyMC40MDk4IDUuMjI5MDEgMjAuNjI2NyA1LjUzMzI4IDIwLjQxMDdMMTEuOTMyMyAxNS44NzA1TDE4LjMzMTIgMjAuNDEwN0MxOC42MzU1IDIwLjYyNjcgMTkuMDU2NSAyMC40MDk4IDE5LjA1NjUgMjAuMDM2NVY3LjYwOTA0QzE5LjA1NjUgNy4zNTUzMyAxOC44NTA2IDcuMTQ5NDEgMTguNTk2OSA3LjE0OTQxWiIgZmlsbD0iY3VycmVudENvbG9yIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTguMTM3MyAzSDUuNzI3MjVDNS4yMTg4OSAzIDQuODA3OTggMy40MTE4MyA0LjgwNzk4IDMuOTE5MjZWNS4yOTgxNUM0LjgwNzk4IDUuNTUxODcgNS4wMTM5IDUuNzU3NzkgNS4yNjc2MSA1Ljc1Nzc5SDE4LjU5NjlDMTguODUwNiA1Ljc1Nzc5IDE5LjA1NjUgNS41NTE4NyAxOS4wNTY1IDUuMjk4MTVWMy45MTkyNkMxOS4wNTY1IDMuNDExODMgMTguNjQ0NyAzIDE4LjEzNzMgM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
-                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5969 7.14941H5.26761C5.0139 7.14941 4.80798 7.35533 4.80798 7.60904V20.0365C4.80798 20.4098 5.22901 20.6267 5.53328 20.4107L11.9323 15.8705L18.3312 20.4107C18.6355 20.6267 19.0565 20.4098 19.0565 20.0365V7.60904C19.0565 7.35533 18.8506 7.14941 18.5969 7.14941Z" fill="currentColor"></path>
-                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.1373 3H5.72725C5.21889 3 4.80798 3.41183 4.80798 3.91926V5.29815C4.80798 5.55187 5.0139 5.75779 5.26761 5.75779H18.5969C18.8506 5.75779 19.0565 5.55187 19.0565 5.29815V3.91926C19.0565 3.41183 18.6447 3 18.1373 3Z" fill="currentColor"></path>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
+                                                                             data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xOC41OTY5IDcuMTQ5NDFINS4yNjc2MUM1LjAxMzkgNy4xNDk0MSA0LjgwNzk4IDcuMzU1MzMgNC44MDc5OCA3LjYwOTA0VjIwLjAzNjVDNC44MDc5OCAyMC40MDk4IDUuMjI5MDEgMjAuNjI2NyA1LjUzMzI4IDIwLjQxMDdMMTEuOTMyMyAxNS44NzA1TDE4LjMzMTIgMjAuNDEwN0MxOC42MzU1IDIwLjYyNjcgMTkuMDU2NSAyMC40MDk4IDE5LjA1NjUgMjAuMDM2NVY3LjYwOTA0QzE5LjA1NjUgNy4zNTUzMyAxOC44NTA2IDcuMTQ5NDEgMTguNTk2OSA3LjE0OTQxWiIgZmlsbD0iY3VycmVudENvbG9yIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTguMTM3MyAzSDUuNzI3MjVDNS4yMTg4OSAzIDQuODA3OTggMy40MTE4MyA0LjgwNzk4IDMuOTE5MjZWNS4yOTgxNUM0LjgwNzk4IDUuNTUxODcgNS4wMTM5IDUuNzU3NzkgNS4yNjc2MSA1Ljc1Nzc5SDE4LjU5NjlDMTguODUwNiA1Ljc1Nzc5IDE5LjA1NjUgNS41NTE4NyAxOS4wNTY1IDUuMjk4MTVWMy45MTkyNkMxOS4wNTY1IDMuNDExODMgMTguNjQ0NyAzIDE4LjEzNzMgM1oiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8L3N2Zz4K"
+                                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                             style="display: none;">
+                                                                            <path fill-rule="evenodd"
+                                                                                  clip-rule="evenodd"
+                                                                                  d="M18.5969 7.14941H5.26761C5.0139 7.14941 4.80798 7.35533 4.80798 7.60904V20.0365C4.80798 20.4098 5.22901 20.6267 5.53328 20.4107L11.9323 15.8705L18.3312 20.4107C18.6355 20.6267 19.0565 20.4098 19.0565 20.0365V7.60904C19.0565 7.35533 18.8506 7.14941 18.5969 7.14941Z"
+                                                                                  fill="currentColor"></path>
+                                                                            <path fill-rule="evenodd"
+                                                                                  clip-rule="evenodd"
+                                                                                  d="M18.1373 3H5.72725C5.21889 3 4.80798 3.41183 4.80798 3.91926V5.29815C4.80798 5.55187 5.0139 5.75779 5.26761 5.75779H18.5969C18.8506 5.75779 19.0565 5.55187 19.0565 5.29815V3.91926C19.0565 3.41183 18.6447 3 18.1373 3Z"
+                                                                                  fill="currentColor"></path>
                                                                         </svg>
                                                                     </div>
                                                                 </div>
                                                                 보고싶어요
                                                             </button>
-                                                            <button class="css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs e1svyhwg24">
-                                                                <div class="Icon icPencil css-1q1i623-SVG e1282e850">
+                                                            <button
+                                                                    class="css-3p9quy-StylelessButton-ContentActionButton-ContentCommentButtonOnXs e1svyhwg24">
+                                                                <div
+                                                                        class="Icon icPencil css-1q1i623-SVG e1282e850">
                                                                     <div>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" class="injected-svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
                                                                              data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTcuMjUyNVYyMS4wMDI1SDYuNzVMMTcuODEgOS45NDI1TDE0LjA2IDYuMTkyNUwzIDE3LjI1MjVaTTIwLjcxIDcuMDQyNUMyMS4xIDYuNjUyNSAyMS4xIDYuMDIyNSAyMC43MSA1LjYzMjVMMTguMzcgMy4yOTI1QzE3Ljk4IDIuOTAyNSAxNy4zNSAyLjkwMjUgMTYuOTYgMy4yOTI1TDE1LjEzIDUuMTIyNUwxOC44OCA4Ljg3MjVMMjAuNzEgNy4wNDI1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
                                                                              xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                            <path d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
-                                                                                  fill="currentColor"></path>
+                                                                            <path
+                                                                                    d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
+                                                                                    fill="currentColor"></path>
                                                                         </svg>
                                                                     </div>
                                                                 </div>
                                                                 코멘트
                                                             </button>
-                                                            <button class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25">
-                                                                <div class="Icon icPencil css-1q1i623-SVG e1282e850">
+                                                            <button
+                                                                    class="css-orm7r7-StylelessButton-ContentActionButton-ContentCommentButtonOnSm e1svyhwg25">
+                                                                <div
+                                                                        class="Icon icPencil css-1q1i623-SVG e1282e850">
                                                                     <div>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" class="injected-svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
                                                                              data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTcuMjUyNVYyMS4wMDI1SDYuNzVMMTcuODEgOS45NDI1TDE0LjA2IDYuMTkyNUwzIDE3LjI1MjVaTTIwLjcxIDcuMDQyNUMyMS4xIDYuNjUyNSAyMS4xIDYuMDIyNSAyMC43MSA1LjYzMjVMMTguMzcgMy4yOTI1QzE3Ljk4IDIuOTAyNSAxNy4zNSAyLjkwMjUgMTYuOTYgMy4yOTI1TDE1LjEzIDUuMTIyNUwxOC44OCA4Ljg3MjVMMjAuNzEgNy4wNDI1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
                                                                              xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                            <path d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
-                                                                                  fill="currentColor"></path>
+                                                                            <path
+                                                                                    d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
+                                                                                    fill="currentColor"></path>
                                                                         </svg>
                                                                     </div>
                                                                 </div>
                                                                 코멘트
-                                                                <div class="css-4w39q2-StyledDropdownWrapper e1svyhwg28 off">
+                                                                <div
+                                                                        class="css-4w39q2-StyledDropdownWrapper e1svyhwg28 off">
                                                                     <div class="css-ve4kut">
-                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem">
-                                                                            <div class="Icon icPencil icon css-1q1i623-SVG e1282e850">
+                                                                        <div
+                                                                                class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem">
+                                                                            <div
+                                                                                    class="Icon icPencil icon css-1q1i623-SVG e1282e850">
                                                                                 <div>
                                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                                          width="24" height="24"
-                                                                                         viewBox="0 0 24 24" fill="none"
+                                                                                         viewBox="0 0 24 24"
+                                                                                         fill="none"
                                                                                          class="injected-svg"
                                                                                          data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTcuMjUyNVYyMS4wMDI1SDYuNzVMMTcuODEgOS45NDI1TDE0LjA2IDYuMTkyNUwzIDE3LjI1MjVaTTIwLjcxIDcuMDQyNUMyMS4xIDYuNjUyNSAyMS4xIDYuMDIyNSAyMC43MSA1LjYzMjVMMTguMzcgMy4yOTI1QzE3Ljk4IDIuOTAyNSAxNy4zNSAyLjkwMjUgMTYuOTYgMy4yOTI1TDE1LjEzIDUuMTIyNUwxOC44OCA4Ljg3MjVMMjAuNzEgNy4wNDI1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
                                                                                          xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                                        <path d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
-                                                                                              fill="currentColor"></path>
+                                                                                        <path
+                                                                                                d="M3 17.2525V21.0025H6.75L17.81 9.9425L14.06 6.1925L3 17.2525ZM20.71 7.0425C21.1 6.6525 21.1 6.0225 20.71 5.6325L18.37 3.2925C17.98 2.9025 17.35 2.9025 16.96 3.2925L15.13 5.1225L18.88 8.8725L20.71 7.0425Z"
+                                                                                                fill="currentColor">
+                                                                                        </path>
                                                                                     </svg>
                                                                                 </div>
                                                                             </div>
                                                                             코멘트 수정
                                                                         </div>
-                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem">
-                                                                            <div class="Icon icTrash icon css-1q1i623-SVG e1282e850">
+                                                                        <div
+                                                                                class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem">
+                                                                            <div
+                                                                                    class="Icon icTrash icon css-1q1i623-SVG e1282e850">
                                                                                 <div>
                                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                                          width="24" height="24"
-                                                                                         viewBox="0 0 24 24" fill="none"
+                                                                                         viewBox="0 0 24 24"
+                                                                                         fill="none"
                                                                                          class="injected-svg"
                                                                                          data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgMTkuNzVDNiAyMC44NSA2LjkgMjEuNzUgOCAyMS43NUgxNkMxNy4xIDIxLjc1IDE4IDIwLjg1IDE4IDE5Ljc1VjcuNzVINlYxOS43NVoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE1LjAwMTIgNS43NDZDMTQuNTg4MiA1Ljc0NiAxNC4yNTMyIDUuNDExIDE0LjI1MzIgNC45OThWMy43NDZIOS43NDkxN1Y0Ljk5OEM5Ljc0OTE3IDUuNDExIDkuNDE0MTcgNS43NDYgOS4wMDExNyA1Ljc0NkM4LjU4ODE3IDUuNzQ2IDguMjUzMTcgNS40MTEgOC4yNTMxNyA0Ljk5OFYyLjk5OEM4LjI1MzE3IDIuNTg1IDguNTg4MTcgMi4yNSA5LjAwMTE3IDIuMjVIMTUuMDAxMkMxNS40MTQyIDIuMjUgMTUuNzQ5MiAyLjU4NSAxNS43NDkyIDIuOTk4VjQuOTk4QzE1Ljc0OTIgNS40MTEgMTUuNDE0MiA1Ljc0NiAxNS4wMDEyIDUuNzQ2WiIgZmlsbD0iY3VycmVudENvbG9yIi8+CjxyZWN0IHg9IjUiIHk9IjQuNzUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg=="
                                                                                          xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                                        <path d="M6 19.75C6 20.85 6.9 21.75 8 21.75H16C17.1 21.75 18 20.85 18 19.75V7.75H6V19.75Z"
-                                                                                              fill="currentColor"></path>
+                                                                                        <path
+                                                                                                d="M6 19.75C6 20.85 6.9 21.75 8 21.75H16C17.1 21.75 18 20.85 18 19.75V7.75H6V19.75Z"
+                                                                                                fill="currentColor">
+                                                                                        </path>
                                                                                         <path fill-rule="evenodd"
                                                                                               clip-rule="evenodd"
                                                                                               d="M15.0012 5.746C14.5882 5.746 14.2532 5.411 14.2532 4.998V3.746H9.74917V4.998C9.74917 5.411 9.41417 5.746 9.00117 5.746C8.58817 5.746 8.25317 5.411 8.25317 4.998V2.998C8.25317 2.585 8.58817 2.25 9.00117 2.25H15.0012C15.4142 2.25 15.7492 2.585 15.7492 2.998V4.998C15.7492 5.411 15.4142 5.746 15.0012 5.746Z"
-                                                                                              fill="currentColor"></path>
-                                                                                        <rect x="5" y="4.75" width="14"
-                                                                                              height="2"
-                                                                                              fill="currentColor"></rect>
+                                                                                              fill="currentColor">
+                                                                                        </path>
+                                                                                        <rect x="5" y="4.75"
+                                                                                              width="14" height="2"
+                                                                                              fill="currentColor">
+                                                                                        </rect>
                                                                                     </svg>
                                                                                 </div>
                                                                             </div>
@@ -7896,27 +7927,33 @@
                                                                     </div>
                                                                 </div>
                                                             </button>
-                                                            <button class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23" id="watch-btn">
+                                                            <button
+                                                                    class="css-1tc9iuk-StylelessButton-ContentActionButton e1svyhwg23"
+                                                                    id="watch-btn">
                                                                 <div class="Icon icEye css-1q1i623-SVG e1282e850">
                                                                     <div>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" class="injected-svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
                                                                              data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDVDNyA1IDIuNzMgOC4xMSAxIDEyLjVDMi43MyAxNi44OSA3IDIwIDEyIDIwQzE3IDIwIDIxLjI3IDE2Ljg5IDIzIDEyLjVDMjEuMjcgOC4xMSAxNyA1IDEyIDVaTTEyIDE3LjVDOS4yNCAxNy41IDcgMTUuMjYgNyAxMi41QzcgOS43NCA5LjI0IDcuNSAxMiA3LjVDMTQuNzYgNy41IDE3IDkuNzQgMTcgMTIuNUMxNyAxNS4yNiAxNC43NiAxNy41IDEyIDE3LjVaTTEyIDkuNUMxMC4zNCA5LjUgOSAxMC44NCA5IDEyLjVDOSAxNC4xNiAxMC4zNCAxNS41IDEyIDE1LjVDMTMuNjYgMTUuNSAxNSAxNC4xNiAxNSAxMi41QzE1IDEwLjg0IDEzLjY2IDkuNSAxMiA5LjVaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+Cg=="
                                                                              xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                                            <path d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5ZM12 17.5C9.24 17.5 7 15.26 7 12.5C7 9.74 9.24 7.5 12 7.5C14.76 7.5 17 9.74 17 12.5C17 15.26 14.76 17.5 12 17.5ZM12 9.5C10.34 9.5 9 10.84 9 12.5C9 14.16 10.34 15.5 12 15.5C13.66 15.5 15 14.16 15 12.5C15 10.84 13.66 9.5 12 9.5Z"
-                                                                                  fill="currentColor"></path>
+                                                                            <path
+                                                                                    d="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5ZM12 17.5C9.24 17.5 7 15.26 7 12.5C7 9.74 9.24 7.5 12 7.5C14.76 7.5 17 9.74 17 12.5C17 15.26 14.76 17.5 12 17.5ZM12 9.5C10.34 9.5 9 10.84 9 12.5C9 14.16 10.34 15.5 12 15.5C13.66 15.5 15 14.16 15 12.5C15 10.84 13.66 9.5 12 9.5Z"
+                                                                                    fill="currentColor"></path>
                                                                         </svg>
                                                                     </div>
                                                                 </div>
                                                                 보는중
                                                             </button>
-                                                            <button class="css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs e1svyhwg26">
+                                                            <button
+                                                                    class="css-oi7iec-StylelessButton-ContentActionButton-ContentMoreButtonOnXs e1svyhwg26">
                                                                 <div class="Icon icDots css-1q1i623-SVG e1282e850">
                                                                     <div>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" class="injected-svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
                                                                              data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy42MjU5IDExLjk5ODNDMTMuNjI1OSAxMi44OTQ4IDEyLjg5OTEgMTMuNjIxNSAxMi4wMDI2IDEzLjYyMTVDMTEuMTA2MSAxMy42MjE1IDEwLjM3OTMgMTIuODk0OCAxMC4zNzkzIDExLjk5ODNDMTAuMzc5MyAxMS4xMDE4IDExLjEwNjEgMTAuMzc1IDEyLjAwMjYgMTAuMzc1QzEyLjg5OTEgMTAuMzc1IDEzLjYyNTkgMTEuMTAxOCAxMy42MjU5IDExLjk5ODNaTTguMDI2ODIgMTEuOTk4NkM4LjAyNjgyIDEyLjg5NTEgNy4zMDAwNiAxMy42MjE5IDYuNDAzNTUgMTMuNjIxOUM1LjUwNzA0IDEzLjYyMTkgNC43ODAyNyAxMi44OTUxIDQuNzgwMjcgMTEuOTk4NkM0Ljc4MDI3IDExLjEwMjEgNS41MDcwNCAxMC4zNzUzIDYuNDAzNTUgMTAuMzc1M0M3LjMwMDA2IDEwLjM3NTMgOC4wMjY4MiAxMS4xMDIxIDguMDI2ODIgMTEuOTk4NlpNMTcuNjAxNyAxMy42MjE1QzE4LjQ5ODIgMTMuNjIxNSAxOS4yMjUgMTIuODk0OCAxOS4yMjUgMTEuOTk4M0MxOS4yMjUgMTEuMTAxOCAxOC40OTgyIDEwLjM3NSAxNy42MDE3IDEwLjM3NUMxNi43MDUyIDEwLjM3NSAxNS45Nzg0IDExLjEwMTggMTUuOTc4NCAxMS45OTgzQzE1Ljk3ODQgMTIuODk0OCAxNi43MDUyIDEzLjYyMTUgMTcuNjAxNyAxMy42MjE1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
                                                                              xmlns:xlink="http://www.w3.org/1999/xlink">
                                                                             <path fill-rule="evenodd"
@@ -7928,12 +7965,14 @@
                                                                 </div>
                                                                 더보기
                                                             </button>
-                                                            <button class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27">
+                                                            <button
+                                                                    class="css-1u6iefh-StylelessButton-ContentActionButton-ContentMoreButtonOnSm e1svyhwg27">
                                                                 <div class="Icon icDots css-1q1i623-SVG e1282e850">
                                                                     <div>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="24" height="24" viewBox="0 0 24 24"
-                                                                             fill="none" class="injected-svg"
+                                                                             width="24" height="24"
+                                                                             viewBox="0 0 24 24" fill="none"
+                                                                             class="injected-svg"
                                                                              data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy42MjU5IDExLjk5ODNDMTMuNjI1OSAxMi44OTQ4IDEyLjg5OTEgMTMuNjIxNSAxMi4wMDI2IDEzLjYyMTVDMTEuMTA2MSAxMy42MjE1IDEwLjM3OTMgMTIuODk0OCAxMC4zNzkzIDExLjk5ODNDMTAuMzc5MyAxMS4xMDE4IDExLjEwNjEgMTAuMzc1IDEyLjAwMjYgMTAuMzc1QzEyLjg5OTEgMTAuMzc1IDEzLjYyNTkgMTEuMTAxOCAxMy42MjU5IDExLjk5ODNaTTguMDI2ODIgMTEuOTk4NkM4LjAyNjgyIDEyLjg5NTEgNy4zMDAwNiAxMy42MjE5IDYuNDAzNTUgMTMuNjIxOUM1LjUwNzA0IDEzLjYyMTkgNC43ODAyNyAxMi44OTUxIDQuNzgwMjcgMTEuOTk4NkM0Ljc4MDI3IDExLjEwMjEgNS41MDcwNCAxMC4zNzUzIDYuNDAzNTUgMTAuMzc1M0M3LjMwMDA2IDEwLjM3NTMgOC4wMjY4MiAxMS4xMDIxIDguMDI2ODIgMTEuOTk4NlpNMTcuNjAxNyAxMy42MjE1QzE4LjQ5ODIgMTMuNjIxNSAxOS4yMjUgMTIuODk0OCAxOS4yMjUgMTEuOTk4M0MxOS4yMjUgMTEuMTAxOCAxOC40OTgyIDEwLjM3NSAxNy42MDE3IDEwLjM3NUMxNi43MDUyIDEwLjM3NSAxNS45Nzg0IDExLjEwMTggMTUuOTc4NCAxMS45OTgzQzE1Ljk3ODQgMTIuODk0OCAxNi43MDUyIDEzLjYyMTUgMTcuNjAxNyAxMy42MjE1WiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
                                                                              xmlns:xlink="http://www.w3.org/1999/xlink">
                                                                             <path fill-rule="evenodd"
@@ -7944,21 +7983,26 @@
                                                                     </div>
                                                                 </div>
                                                                 더보기
-                                                                <div class="css-4w39q2-StyledDropdownWrapper e1svyhwg28 off">
+                                                                <div
+                                                                        class="css-4w39q2-StyledDropdownWrapper e1svyhwg28 off">
                                                                     <div class="css-ve4kut">
-                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem" id="hate">
-                                                                            <div class="Icon icBlock icon css-1q1i623-SVG e1282e850">
+                                                                        <div class="e1svyhwg29 css-1t4uwd9-StyledDropdownMenuItem"
+                                                                             id="hate">
+                                                                            <div
+                                                                                    class="Icon icBlock icon css-1q1i623-SVG e1282e850">
                                                                                 <div>
                                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                                          width="24" height="24"
-                                                                                         viewBox="0 0 24 24" fill="none"
+                                                                                         viewBox="0 0 24 24"
+                                                                                         fill="none"
                                                                                          class="injected-svg"
                                                                                          data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00IDEyQzQgMTAuMTU0IDQuNjM0IDguNDU4IDUuNjg3IDcuMTAzTDE2Ljg5NiAxOC4zMTJDMTUuNTQyIDE5LjM2NiAxMy44NDYgMjAgMTIgMjBDNy41ODggMjAgNCAxNi40MTEgNCAxMlpNMjAgMTJDMjAgMTMuODQ2IDE5LjM2NSAxNS41NDIgMTguMzExIDE2Ljg5N0w3LjEwMiA1LjY4OEM4LjQ1NyA0LjYzNCAxMC4xNTQgNCAxMiA0QzE2LjQxIDQgMjAgNy41ODkgMjAgMTJaTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJDMiAxNy41MjIgNi40NzcgMjIgMTIgMjJDMTcuNTIyIDIyIDIyIDE3LjUyMiAyMiAxMkMyMiA2LjQ3NyAxNy41MjIgMiAxMiAyWiIgZmlsbD0iY3VycmVudENvbG9yIi8+Cjwvc3ZnPgo="
                                                                                          xmlns:xlink="http://www.w3.org/1999/xlink">
                                                                                         <path fill-rule="evenodd"
                                                                                               clip-rule="evenodd"
                                                                                               d="M4 12C4 10.154 4.634 8.458 5.687 7.103L16.896 18.312C15.542 19.366 13.846 20 12 20C7.588 20 4 16.411 4 12ZM20 12C20 13.846 19.365 15.542 18.311 16.897L7.102 5.688C8.457 4.634 10.154 4 12 4C16.41 4 20 7.589 20 12ZM12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2Z"
-                                                                                              fill="currentColor"></path>
+                                                                                              fill="currentColor">
+                                                                                        </path>
                                                                                     </svg>
                                                                                 </div>
                                                                             </div>
@@ -8088,7 +8132,7 @@
                                                                     정보</h2>
                                                                     <div class="css-s289sk">
                                                                         <div class="css-1ugqy9j"><a
-                                                                                th:href="@{'/tv/'+${tv.idx}+'/info'}">더보기</a>
+                                                                                th:href="@{'/book/'+${book.idx}+'/info'}">더보기</a>
                                                                         </div>
                                                                     </div>
                                                                 </header>
@@ -8096,13 +8140,13 @@
                                                         </div>
                                                         <div class="css-1gkas1x-Grid e1689zdh0">
                                                             <div class="css-1y901al-Row emmoxnt0">
-                                                                <article class="css-1k6vajx-Overview eokm2780" th:object="${tv}">
+                                                                <article class="css-1k6vajx-Overview eokm2780" th:object="${book}">
                                                                     <div class="css-wvh1uf-Summary eokm2781">
                                                                         <span th:text="*{titleOrg}">Avatar: The
                                                                         Way of Water</span>
                                                                         <span
-                                                                                class="css-1t00yeb-OverviewMeta eokm2782" th:text="*{makingDate} + ' · ' + *{country} + ' · ' + *{genre}">2022 · 미국 · 액션</span><br><span
-                                                                            class="css-1t00yeb-OverviewMeta eokm2782" th:text="*{age}">3시간 12분 · 12세</span>
+                                                                                class="css-1t00yeb-OverviewMeta eokm2782" th:text="*{writer} + '·' + *{atDate}">2022 · 미국 · 액션</span><br><span
+<!--                                                                            class="css-1t00yeb-OverviewMeta eokm2782" th:text="*{serDetail} + '(' + *{serDay} + ') ·' + *{serPeriod}">3시간 12분 · 12세</span>-->
                                                                     </div>
                                                                     <div class=" css-k82gae-StyledSelf eb5y16b0">
                                                                         <div class="css-kywn6v-StyledText eb5y16b1" th:text="*{summary}">&lt;아바타:
@@ -8679,7 +8723,7 @@
                                                                     코멘트</h2><span class="css-wzn7fp">10+</span>
                                                                     <div class="css-s289sk">
                                                                         <div class="css-1ugqy9j"><a
-                                                                                th:onclick="'location.href=\'/tv/'+ ${tv.idx} +'/comments\''">더보기</a>
+                                                                                th:onclick="'location.href=\'/book/'+ ${book.idx} +'/comments\''">더보기</a>
                                                                         </div>
                                                                     </div>
                                                                 </header>
@@ -9146,43 +9190,7 @@
                                         <div class="css-wpsvu8">
                                             <section class="css-e2gdle-Self e2ouywk0">
                                                 <div class="css-1wjbj9j-Self e1adaxwi0">
-                                                    <section class="css-aqubhg-ContentSection e1adaxwi3">
-                                                        <div class="css-t7gndh-AdContainer e1adaxwi4">
-                                                            <video poster="https://an2-img.amz.wtchn.net/image/v2/NUqyy575qDVA3LZfMFdFMQ.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd0lqb2lMM1l5TDNOMGIzSmxMM0J5YjIxdmRHbHZiaTh4Tmpjd05UWTNNekkxT0RrNE1EWXpNVEl6SW4wLjExOXAwTXpsLThHSUxzdEoxdmhrZ1phSnlTaWpzX2dkWjYyai01My1mRUk"
-                                                                   playsinline="" class="css-a36vjy-AdVideo e1adaxwi6"
-                                                                   src="https://dhgywazgeek0d.cloudfront.net/watcha/video/upload/br_3m,c_limit,h_960,w_960/v1670566713/b558fb6e042ad6cbb787ae56ada1eddf.mp4"></video>
-                                                            <div class="css-1d2rflg-AdVideoControllers e1adaxwi7">
-                                                                <button class="css-11d2wab-StylelessButton-VideoButton e1adaxwi8"></button>
-                                                                <button class="css-srnj21-StylelessButton-SoundButton e1adaxwi9"></button>
-                                                            </div>
-                                                        </div>
-                                                        <a href="https://wcha.it/3iQjr0a?browser_open_type=external"
-                                                           target="_blank" rel="noopener noreferrer"
-                                                           class="css-1cqdd33-StylelessHref e1imises0">
-                                                            <div class="css-1vitjj-AdRow e1adaxwi16">
-                                                                <div class="css-1jrgqr8-InfoSection e1adaxwi15">
-                                                                    <div class="css-j0epwo-AdDetail e1adaxwi12"><p
-                                                                            class="css-1u6xy1l-AdTitle e1adaxwi10">사막의
-                                                                        왕</p>
-                                                                        <p class="css-agjx6i-AdDescription e1adaxwi11">
-                                                                            12월 16일 공개!</p>
-                                                                        <h3 class="css-nkulx0-ProfileHeader e1adaxwi1">
-                                                                            <div class="css-hy0bgx">
-                                                                                <div class="css-cii8a1-ProfilePhotoImage"></div>
-                                                                            </div>
-                                                                            <div class="css-149xv13-HeaderTitle e1adaxwi2">
-                                                                                왓챠 오리지널
-                                                                            </div>
-                                                                        </h3>
-                                                                    </div>
-                                                                    <div class="css-1yllue8-ButtonContainer e1adaxwi13">
-                                                                        <button class="css-ff7qw0-StylelessButton-GoToAdButton e1adaxwi14">
-                                                                            보고싶어요
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a></section>
+
                                                 </div>
                                             </section>
                                             <div class="css-1nhig6u-RoundedCornerBlock-RoundedCornerBlock">
@@ -9252,291 +9260,6 @@
                                                             </div>
                                                         </div>
                                                     </section>
-                                                    <section class="css-1tywu13 gallery">
-                                                        <div class="css-1gkas1x-Grid e1689zdh0">
-                                                            <div class="css-1y901al-Row emmoxnt0">
-                                                                <header class="css-1ue9xs6"><h2 class="css-1wtjsst">
-                                                                    갤러리</h2><a class="pink" th:onclick="'location.href=\'/tv/' + ${tv.idx} + '/gallery\''">모아보기</a></header>
-                                                            </div>
-                                                        </div>
-                                                        <div class="css-usdi1z">
-                                                            <div class="css-15xcaei">
-                                                                <div class="css-174lxc3">
-                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
-                                                                        <div class="css-1y901al-Row emmoxnt0">
-                                                                            <ul class="css-1cduxg0-VisualUl">
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/qYVmXw7ylGy2Fo7GdQyNyA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMkozWVdRNWNuRnFlbkJ3Wkd4NGJITTJiMnR6SW4wLm9yNGNMdDNTdXBxc0loZ1lYYmR6UkI5azY2VGo5WUFtbXRYT3FOeDMxeUk">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/FcaaVfhrDYms84UQfy85og.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0YzYm5abWVIUnVjSGxzWW1KNGRHcHljV3hzSW4wLlpzU0w1bGpyRE54UE8yc0syVWlKZWRRcnd0Rjhzanh3TElTaWdfMEpBUFE">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/O0ir-PUFI-OIIFJf4okbug.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmRwZW5aNWVIcHhjbU5xZDNac2VtYzVhbmwxSW4wLkxsb1ZmZ3hTZVlmR3puM0xKYXd6QkY4QkFZUUh1cEtoZlVXZ25yOVM4OTg">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/-bNsG7W68ktN54GhRuHklw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0o2YUdabWFtSjBiR2RsT1dOaVpXWmlZbW80SW4wLmJVUnRuLWstM18zTUpmWWZvOUwtdTBsUmFEaHRoQnNqOUZTUTRqZHlqb1k">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/Sw3rZjUrs3e_lbHMolXmPA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0p5Y1dwbVpHZHFOM1o0T1doeU0ySmpZM1pzSW4wLmVSdkttOXBGVTFDc3pWaG55am5DWldtZ2tZSzVrWjdWZXhENHRSem16MmM">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/c4-LMx92VyGuBzSBvPj5lQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0pzZW1aaWVYaHJOM2MyZVRCbFluQnJjbkJpSW4wLkxRQmFNaFpfU0hlRDZDeUtDa19KaVF0YTNId3huTGtUdVhmSWRwNFBFYm8">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/Qj0L3Ryehu_VxP9tZUMjGA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlp3YjJod1pXMTJZWGx2YkhJd1p6QndlV1puSW4wLjlrbEd0TFg0XzYyRHpja0RHZkNRV1h2U3pYZ0VxSXJMYmZOMkpLeXNFbm8">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/TCD9WeDajXV4HXNeNG0vgw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlJyT0Roc2RXWm1OMjVtZVdGaloyNWxaV1IwSW4wLlNmd0dPZkhRcXdIbHNfcktVdnF5NXcwVGdfQzJKOENuWWtyX1dLVTZoeDg">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/3CNg55TUv2HJjJEzKlIu5Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1IwWlhabmFHaHBibWhxWW5Kbk9XdGplV1ZtSW4wLk5ZQkFqWUhQUkk4ZzlRS2ItRGpXdHIxa01iTjBXeUtpcGJQVG5fY00xWTg">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/6Ut77VsGMV3jayEUJuS6HA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMnB3YkdkMWJuUnFlbWx2YXpKdmEyWjZiMnhtSW4wLjhFUld1Y3dCWHpZR3VIYXRfMjZpZVI5eExkakxFdnFhWjEyZDAtRFdaRUE">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/cDXVqPFTCdhHmelViWB1rA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1prWVdGeU1IcHpaSEo0WkRkak1XSnZaRFZsSW4wLnNoZ0ZpX3pXeThDY0UwcDd6N3N4Y1JHVDMwNG93WERJbk54YlVDYUdQcTA">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="css-1cw0vk0 last">
-                                                                                    <div class="css-1qwe0o7-StyledSelf e1q5rx9q0">
-                                                                                        <img height="100%" class="css-bhgne5-StyledBackground e1q5rx9q1" src="https://an2-img.amz.wtchn.net/image/v2/oWwYuJIAIihm8m2Y0Buw3w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5qUXdlRE0yTUhFNE1DSmRMQ0p3SWpvaUwzWXhMMk5zT1hSdFpXbHBaelJzY3pVeE0yTnlPREZ6SW4wLjRsWC02U2hYRWJhcmNTeGVncHJzU0ptVEtKTkdtRFVqclFpaXBPNjhnajQ">
-                                                                                    </div>
-                                                                                </li>
-                                                                                <div class="css-ml096x"></div>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div direction="left" class="css-a89h8a"></div>
-                                                            <div direction="right" class="css-1qgb5vh"></div>
-                                                            <div class="arrow_button css-lgnnyx" direction="left">
-                                                                <div class="css-1hestod"></div>
-                                                            </div>
-                                                            <div class="arrow_button css-pf83cl" direction="right">
-                                                                <div class="css-vp7uyl"><img
-                                                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEgxMlYxNkgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMyOTJBMzIiIHN0cm9rZT0iIzI5MkEzMiIgc3Ryb2tlLXdpZHRoPSIuMzUiIGQ9Ik0zLjQyOSAxMy40MDlMNC4zNTQgMTQuMjU4IDEwLjY4IDguNDYgMTEuMTQzIDguMDM2IDQuMzU0IDEuODEzIDMuNDI5IDIuNjYyIDkuMjkxIDguMDM2eiIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                        alt="forward"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="css-1gkas1x-Grid e1689zdh0">
-                                                            <div class="css-1y901al-Row emmoxnt0">
-                                                                <hr class="css-god8tc">
-                                                            </div>
-                                                        </div>
-                                                    </section>
-                                                    <section class="css-1tywu13 video">
-                                                        <div class="css-1gkas1x-Grid e1689zdh0">
-                                                            <div class="css-1y901al-Row emmoxnt0">
-                                                                <header class="css-1ue9xs6"><h2 class="css-1wtjsst">
-                                                                    동영상</h2></header>
-                                                            </div>
-                                                        </div>
-                                                        <div class="css-usdi1z">
-                                                            <div class="css-15xcaei">
-                                                                <div class="css-174lxc3">
-                                                                    <div class="css-1gkas1x-Grid e1689zdh0">
-                                                                        <div class="css-1y901al-Row emmoxnt0">
-                                                                            <ul class="e10pt7680 css-wq135y-VisualUl-VideoHorizontalUl">
-                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-                                                                                    <div class="css-7wh3a0"><a
-                                                                                            href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1OaU16M0xSZFhfaw"
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            class="css-18apgv4">
-                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-                                                                                            <span class="css-bhgne5-StyledBackground e1q5rx9q1"
-                                                                                                  style="background-image: url(https://img.youtube.com/watch?v=JNL44p5kzTk;);"></span>
-                                                                                            <div class="css-1ytinql">
-                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                                                      width="24px"
-                                                                                                      height="24px"
-                                                                                                      class="css-kr87ki"></span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="css-xghows">
-                                                                                            <div class="css-17y9cpn">
-                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">재개봉 30초 예고편
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a></div>
-                                                                                </li>
-                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-                                                                                    <div class="css-7wh3a0"><a
-                                                                                            href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1NeDdrQUEwWVVQMA"
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            class="css-18apgv4">
-                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-                                                                                            <span class="css-bhgne5-StyledBackground e1q5rx9q1"
-                                                                                                  style="background-image: url(https://img.youtube.com/watch?v=JNL44p5kzTk;);"></span>
-                                                                                            <div class="css-1ytinql">
-                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                                                      width="24px"
-                                                                                                      height="24px"
-                                                                                                      class="css-kr87ki"></span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="css-xghows">
-                                                                                            <div class="css-17y9cpn">
-                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">메인 예고편
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a></div>
-                                                                                </li>
-                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-                                                                                    <div class="css-7wh3a0"><a
-                                                                                            href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1vc0RWUW9oN3lodw"
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            class="css-18apgv4">
-                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-                                                                                            <span class="css-bhgne5-StyledBackground e1q5rx9q1"
-                                                                                                  style="background-image: url(https://img.youtube.com/watch?v=JNL44p5kzTk;);"></span>
-                                                                                            <div class="css-1ytinql">
-                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                                                      width="24px"
-                                                                                                      height="24px"
-                                                                                                      class="css-kr87ki"></span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="css-xghows">
-                                                                                            <div class="css-17y9cpn">
-                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">뮤직 비디오
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a></div>
-                                                                                </li>
-                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-                                                                                    <div class="css-7wh3a0"><a
-                                                                                            href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj00T1BCMkp1NnF5NA"
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            class="css-18apgv4">
-                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-                                                                                            <span class="css-5sjqrq-StyledBackground e1q5rx9q1"></span>
-                                                                                            <div class="css-1ytinql">
-                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                                                      width="24px"
-                                                                                                      height="24px"
-                                                                                                      class="css-kr87ki"></span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="css-xghows">
-                                                                                            <div class="css-17y9cpn">
-                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">러브 액츄얼리 꿀팁 영상
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a></div>
-                                                                                </li>
-                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-                                                                                    <div class="css-7wh3a0"><a
-                                                                                            href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1YVDVGcHZqUzN3TQ"
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            class="css-18apgv4">
-                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-                                                                                            <span class="css-5sjqrq-StyledBackground e1q5rx9q1"></span>
-                                                                                            <div class="css-1ytinql">
-                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                                                      width="24px"
-                                                                                                      height="24px"
-                                                                                                      class="css-kr87ki"></span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="css-xghows">
-                                                                                            <div class="css-17y9cpn">
-                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">최고의 1분 영상
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a></div>
-                                                                                </li>
-                                                                                <li class="css-1xgzykb-VideoListItem e10pt7681">
-                                                                                    <div class="css-7wh3a0"><a
-                                                                                            href="https://redirect.watcha.com/galaxy/aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj10UkpMNDJNaE1wQQ"
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            class="css-18apgv4">
-                                                                                        <div class="css-8g82qf-StyledSelf e1q5rx9q0">
-                                                                                            <span class="css-5sjqrq-StyledBackground e1q5rx9q1"></span>
-                                                                                            <div class="css-1ytinql">
-                                                                                                <span src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTUiIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjUxIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTE2IDMwYzcuNzMyIDAgMTQtNi4yNjggMTQtMTQgMC03LjczMS02LjI2OC0xNC0xNC0xNFMyIDguMjY5IDIgMTZjMCA3LjczMiA2LjI2OCAxNCAxNCAxNG0wIDJDNy4xNjMgMzIgMCAyNC44MzcgMCAxNiAwIDcuMTY0IDcuMTYzIDAgMTYgMHMxNiA3LjE2NCAxNiAxNmMwIDguODM3LTcuMTYzIDE2LTE2IDE2Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTEyIDIyLjA5VjkuOTFhLjUuNSAwIDAgMSAuNzY5LS40MjFsOS41NjggNi4wODlhLjUuNSAwIDAgMSAwIC44NDRsLTkuNTY4IDYuMDlBLjUuNSAwIDAgMSAxMiAyMi4wOSIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                                                      width="24px"
-                                                                                                      height="24px"
-                                                                                                      class="css-kr87ki"></span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="css-xghows">
-                                                                                            <div class="css-17y9cpn">
-                                                                                                <div class=" css-sloxdm-StyledSelf eb5y16b0">
-                                                                                                    <div class="css-1fucs4t-StyledText eb5y16b1">통합 30초 예고편
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </a></div>
-                                                                                </li>
-                                                                                <div class="css-ml096x"></div>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div direction="left" class="css-a89h8a"></div>
-                                                            <div direction="right" class="css-1qgb5vh"></div>
-                                                            <div class="arrow_button css-38kpup" direction="left">
-                                                                <div class="css-1hestod"></div>
-                                                            </div>
-                                                            <div class="arrow_button css-pf83cl" direction="right">
-                                                                <div class="css-vp7uyl"><img
-                                                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEgxMlYxNkgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMyOTJBMzIiIHN0cm9rZT0iIzI5MkEzMiIgc3Ryb2tlLXdpZHRoPSIuMzUiIGQ9Ik0zLjQyOSAxMy40MDlMNC4zNTQgMTQuMjU4IDEwLjY4IDguNDYgMTEuMTQzIDguMDM2IDQuMzU0IDEuODEzIDMuNDI5IDIuNjYyIDkuMjkxIDguMDM2eiIvPgogICAgPC9nPgo8L3N2Zz4K"
-                                                                        alt="forward"></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="css-1gkas1x-Grid e1689zdh0">
-                                                            <div class="css-1y901al-Row emmoxnt0">
-                                                                <hr class="css-god8tc">
-                                                            </div>
-                                                        </div>
-                                                    </section>
                                                 </div>
                                             </div>
                                             <div class="css-gdpty9"></div>
@@ -9555,27 +9278,30 @@
                                                         </div>
                                                         <div class="css-1gkas1x-Grid e1689zdh0">
                                                             <div class="css-1y901al-Row emmoxnt0">
-                                                                <ul class="css-27z1qm-VisualUl-ContentGrid e14whxmg0    ">
-                                                                    <li class="css-1hp6p72"><a title="로맨틱 홀리데이"
-                                                                                               href="/ko-KR/contents/mOAZPad">
-                                                                        <div class="css-1qmeemv">
-                                                                            <div class=" css-unzuzl-StyledLazyLoadingImage ezcopuc0">
-                                                                                <img src="https://an2-img.amz.wtchn.net/image/v2/18czxRiKprJDG6QiaGH9iQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjUxTjI5d2FUVjBkM0Y1YVdScVpIQm1kV3g1SW4wLnRUYkJCQmNjS1k2SkxkNkwxZmxMRFBIdEo3dkFIdmp0RXY1clZ6cWJJQUk"
-                                                                                     class="css-qhzw1o-StyledImg ezcopuc1">
+                                                                <ul
+                                                                        class="css-27z1qm-VisualUl-ContentGrid e14whxmg0 webtoon-table-same">
+                                                                    <li class="css-1hp6p72 webtoon-tr-same">
+                                                                        <a title="그 여자 작사 그 남자 작곡"
+                                                                           href="/ko-KR/contents/mLOP2V5">
+                                                                            <div class="css-1qmeemv">
+                                                                                <div
+                                                                                        class=" css-tpjapx-StyledLazyLoadingImage ezcopuc0">
+                                                                                    <img src="https://an2-img.amz.wtchn.net/image/v2/0R0x-3L9CUQq9JhWDksquQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1KbklsMHNJbkFpT2lJdmRqSXZjM1J2Y21VdmQyVmlkRzl2Ymk4eE5qUXlOalk1TnpBeU5EUXhPRGN5TVRneUlpd2ljU0k2T0RBc0luY2lPalE1TUgwLlVidG5XRXRNbkpDdnlSc3N3M2lqNXZ2X253THNlalc5dURDNUM1UEdBRDg"
+                                                                                         class="css-qhzw1o-StyledImg ezcopuc1 webtoon-img-same">
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="ottBadge css-5o7sb2"
-                                                                                 src="https://an2-img.amz.wtchn.net/image/v1/updatable_images/2571/original/42e70f1bc34d7af54478a311983ecf6d3601eefa.png"></div>
-                                                                            <div class="ottBadge css-oobk33"
-                                                                                 src="https://an2-img.amz.wtchn.net/image/v2/33c15d90f101414a351372f19172859f.png?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYUm9Jam9pTDNZeUwzTjBiM0psTDNWcGJXRm5aUzh4TmpFeE1qQXdNVGN3T1RZd05qWTVNRE0xSW4wLlFwWFc3MERPaF9GR3ZMWVVzSUFCOFdLNWhLRjE3Ym5za1Z1bVFEN0lsSkU"></div>
-                                                                        </div>
-                                                                        <div class="css-ixy093">
-                                                                            <div class="css-niy0za">유 윌 미스 미</div>
-                                                                            <div>
-                                                                                <div class="css-m9i0qw">평균 ★ 2.5</div>
-                                                                                <div class="css-1vvt4am">영화</div>
+                                                                            <div class="css-ixy093">
+                                                                                <div
+                                                                                        class="css-niy0za webtoon-title-same">
+                                                                                    금세 사랑에 빠지는</div>
+                                                                                <div>
+                                                                                    <div class="css-m9i0qw">평균 ★ 2.5
+                                                                                    </div>
+                                                                                    <div class="css-1vvt4am">웹툰
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </a></li>
+                                                                        </a></li>
                                                                     <li class="css-1hp6p72"><a title="그 여자 작사 그 남자 작곡"
                                                                                                href="/ko-KR/contents/mLOP2V5">
                                                                         <div class="css-1qmeemv">
@@ -10152,7 +9878,7 @@
                 <div class="css-1p257d1-modalAddStyle">
                     <header title="" class="css-166ww79-HeaderBarPrimitive-headerAddStyle">
                         <div class="css-19pxr9t"><button aria-label="close" class="css-1d7tft4-StylelessButton-HeaderCloseButtonSelf e1k34u8y0"></button></div>
-                        <em class="css-10mjbgt" th:text="${tv.title}">아바타: 물의 길</em>
+                        <em class="css-10mjbgt" th:text="${webtoon.title}">아바타: 물의 길</em>
                         <div class="css-19pxr9t">
                             <button class="css-1lvet1d-StylelessButton"></button>
                             <button class="css-r2q33l-StylelessButton">저장</button>

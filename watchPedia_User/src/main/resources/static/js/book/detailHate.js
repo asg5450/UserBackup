@@ -10,7 +10,7 @@ function hateSave() {
         headers: {'Content-Type': 'application/json;charset=UTF-8'},
         data: JSON.stringify({           // HTTP 요청과 함께 서버로 보낼 데이터
              userIdx: loginIdx.idx,
-            contentType: "webtoon",
+            contentType: "book",
             contentIdx: contentIdx
         }),
         type: 'POST',           // HTTP 요청 방식(GET, POST)

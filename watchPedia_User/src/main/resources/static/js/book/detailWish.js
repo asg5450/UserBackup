@@ -4,7 +4,7 @@ wish.addEventListener('click', () => {
             url: '/wish/save',
             headers: {'Content-Type': 'application/json;charset=UTF-8'},
             data: JSON.stringify({
-                contentType: "tv",
+                contentType: "book",
                 contentIdx: contentIdx,
                 userIdx: loginIdx.title
             }),

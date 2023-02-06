@@ -20,7 +20,7 @@ document.addEventListener('click', (e) => {
         url: '/estimate', // 클라이언트가 요청을 보낼 서버의 URL 주소
         headers: {'Content-Type': 'application/json;charset=UTF-8'},
         data: JSON.stringify({           // HTTP 요청과 함께 서버로 보낼 데이터
-          starContentType: "movie",
+          starContentType: "book",
           starContentIdx: contentIdx,
           starUserIdx: loginIdx.title,
           starPoint: e.target.value

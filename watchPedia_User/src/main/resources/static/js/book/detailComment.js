@@ -20,7 +20,7 @@ if(document.querySelector("a#login-idx")) {
             url: '/comment/save', // 클라이언트가 요청을 보낼 서버의 URL 주소
             headers: {'Content-Type': 'application/json;charset=UTF-8'},
             data: JSON.stringify({           // HTTP 요청과 함께 서버로 보낼 데이터
-                contentType: "tv",
+                contentType: "book",
                 contentIdx: contentIdx,
                 userIdx: loginIdx,
                 text: inputText,
@@ -88,7 +88,7 @@ if(document.querySelector("a#login-idx")) {
             url: '/comment/delete',
             headers: {'Content-Type': 'application/json;charset=UTF-8'},
             data: JSON.stringify({           // HTTP 요청과 함께 서버로 보낼 데이터
-                contentType: "tv",
+                contentType: "book",
                 contentIdx: contentIdx,
                 userIdx: loginIdx,
                 text: ""
@@ -204,11 +204,11 @@ const spoilerLi = document.querySelector(".spoiler-li")
 const notSpoilerLi = document.querySelector(".not-spoiler-li")
 const loadingIcon = document.querySelector("#loading-icon");
 let loading = false;
-const movieIdx = window.location.href.split("/tv/")[1]
+const movieIdx = window.location.href.split("/book/")[1]
 let page = 1;
 function addList() {
     $.ajax({
-        url: `/tv/${tvIdx}/new?page=${page}`,
+        url: `/book/${webIdx}/new?page=${page}`,
         headers: {'Content-Type': 'application/json;charset=UTF-8'},
         type: 'GET',
         dataType: "json",
