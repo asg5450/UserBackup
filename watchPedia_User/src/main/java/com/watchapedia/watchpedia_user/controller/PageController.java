@@ -4,6 +4,10 @@ import com.watchapedia.watchpedia_user.model.dto.UserSessionDto;
 import com.watchapedia.watchpedia_user.model.dto.comment.CommentDto;
 import com.watchapedia.watchpedia_user.model.dto.content.MovieDto;
 import com.watchapedia.watchpedia_user.model.dto.content.WebtoonDto;
+import com.watchapedia.watchpedia_user.model.entity.content.Book;
+import com.watchapedia.watchpedia_user.model.entity.content.Movie;
+import com.watchapedia.watchpedia_user.model.entity.content.Tv;
+import com.watchapedia.watchpedia_user.model.entity.content.Webtoon;
 import com.watchapedia.watchpedia_user.model.entity.content.ajax.Star;
 import com.watchapedia.watchpedia_user.model.network.request.ajax.StarRequest;
 import com.watchapedia.watchpedia_user.model.network.response.PersonResponse;
@@ -13,6 +17,7 @@ import com.watchapedia.watchpedia_user.model.network.response.content.StarAndCom
 import com.watchapedia.watchpedia_user.model.network.response.content.StarResponse;
 import com.watchapedia.watchpedia_user.model.repository.comment.CommentRepository;
 import com.watchapedia.watchpedia_user.model.repository.UserRepository;
+import com.watchapedia.watchpedia_user.model.repository.content.BookRepository;
 import com.watchapedia.watchpedia_user.model.repository.content.MovieRepository;
 import com.watchapedia.watchpedia_user.model.repository.content.TvRepository;
 import com.watchapedia.watchpedia_user.model.repository.content.WebtoonRepository;
@@ -41,7 +46,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PageController {
     final StarService starService;
-
     final MovieService movieService;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
@@ -82,8 +86,9 @@ public class PageController {
     private final MovieRepository movieRepository;
     private final TvRepository tvRepository;
     private final WebtoonRepository webtoonRepository;
+    private final BookRepository bookRepository;
 
-    @GetMapping("/{contentType}/{contentIdx}/comments") // http://localhost:8080/movie/1/comments
+    @GetMapping("/{contentType}/{contentIdx}/comments") // http://localhost:8787/movie/1/comments
     public String commentList(
             @PathVariable String contentType,
             @PathVariable Long contentIdx,
@@ -105,9 +110,9 @@ public class PageController {
             case "webtoon" ->{
                 contentTitle = webtoonRepository.findById(contentIdx).get().getWebTitle();
             }
-//            case "book" -> {
-//
-//            }
+            case "book" ->{
+                contentTitle = bookRepository.findById(contentIdx).get().getBookTitle();
+            }
         }
         map.addAttribute("userSession", dto);
         map.addAttribute("commentList", commentList);
@@ -153,16 +158,45 @@ public class PageController {
         return new ModelAndView("/personDetail");
     }
 
+    @GetMapping("/search/contents/{searchKey}")
+    public ModelAndView searchContents(@PathVariable String searchKey, HttpSession session){
+        System.out.println("searchContents 페이지 컨트롤러에 잘 도착함");
+        System.out.println("searchKey 매개변수로 받은 값 : " + searchKey);
 
-    @GetMapping(path="/mypage/analysis")  // localhost:9090/mypage/analysis
-    public ModelAndView analysis(){
-        return new ModelAndView("/mypage/analysis") ;
+        UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
+
+        //영화 addObject 만들기
+        List<Movie> movies = movieRepository.findByMovTitleContaining(searchKey);
+        System.out.println(movies);
+
+        //TV addObject 만들기
+        List<Tv> tvs = tvRepository.findByTvTitleContaining(searchKey);
+        System.out.println(tvs);
+
+        //책 addObject 만들기
+        List<Book> books = bookRepository.findByBookTitleContaining(searchKey);
+        System.out.println(books);
+
+        //웹툰 addObject 만들기
+        List<Webtoon> webtoons = webtoonRepository.findByWebTitleContaining(searchKey);
+        System.out.println(webtoons);
+
+        return new ModelAndView("/search/searchContent")
+                .addObject("userSession", dto)
+                .addObject("searchKey", searchKey)
+                .addObject("movies", movies)
+                .addObject("tvs", tvs)
+                .addObject("books",books)
+                .addObject("webtoons", webtoons);
+    }
+    @GetMapping("/search/person/{searchKey}")
+    public ModelAndView searchPerson(@PathVariable String searchKey){
+        System.out.println("searchPerson 페이지 컨트롤러에 잘 도착함");
+        System.out.println("searchKey 매개변수로 받은 값 : " + searchKey);
+
+        return new ModelAndView("/search/searchPerson");
     }
 
 
-    @GetMapping(path="/mypage/myPage")  // localhost:9090/mypage/myPage
-    public ModelAndView myPage(){
-        return new ModelAndView("/mypage/myPage") ;
-    }
 
 }

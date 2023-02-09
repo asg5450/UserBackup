@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface TvRepository extends JpaRepository<Tv, Long> {
     List<Tv> findByTvGenreContaining(String tvGenre);
+    List<Tv> findByTvTitleContaining(String searchKey);
 
 
 }
