@@ -1,4 +1,4 @@
-package com.watchapedia.watchpedia_user.model.entity.content.ajax;
+package com.watchapedia.watchpedia_user.controller.content.ajax;
 
 import com.watchapedia.watchpedia_user.model.dto.SearchDto;
 import com.watchapedia.watchpedia_user.model.dto.UserDto;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/search")
+@RequestMapping("/api/search")
 @RequiredArgsConstructor
 public class SearchBarApiController {
 

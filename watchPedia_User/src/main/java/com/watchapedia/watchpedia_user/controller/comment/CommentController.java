@@ -6,12 +6,14 @@ import com.watchapedia.watchpedia_user.model.entity.content.ajax.Star;
 import com.watchapedia.watchpedia_user.model.network.request.comment.CommentRequest;
 import com.watchapedia.watchpedia_user.model.network.request.comment.LikeRequest;
 import com.watchapedia.watchpedia_user.model.network.response.comment.CommentResponse;
+import com.watchapedia.watchpedia_user.model.network.response.content.BookResponse;
 import com.watchapedia.watchpedia_user.model.network.response.content.MovieResponse;
 import com.watchapedia.watchpedia_user.model.network.response.content.TvResponse;
 import com.watchapedia.watchpedia_user.model.network.response.content.WebtoonResponse;
 import com.watchapedia.watchpedia_user.model.repository.content.ajax.StarRepository;
 import com.watchapedia.watchpedia_user.model.repository.UserRepository;
 import com.watchapedia.watchpedia_user.service.comment.CommentService;
+import com.watchapedia.watchpedia_user.service.content.BookService;
 import com.watchapedia.watchpedia_user.service.content.MovieService;
 import com.watchapedia.watchpedia_user.service.content.TvService;
 import com.watchapedia.watchpedia_user.service.content.WebtoonService;
@@ -72,6 +74,7 @@ public class CommentController {
     final TvService tvService;
     final WebtoonService webtoonService;
     final MovieService movieService;
+    final BookService bookService;
     @GetMapping("/{commentIdx}")
     public String commentView(
             @PathVariable Long commentIdx,
@@ -81,7 +84,6 @@ public class CommentController {
     ){
         UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
         CommentResponse comment = commentService.findComment(commentIdx, dto!=null?dto.userIdx():null, pageable);
-
         switch (comment.contentType()){
             case "movie" -> {
                 MovieResponse content =movieService.movieView(comment.contentIdx());
@@ -96,9 +98,10 @@ public class CommentController {
                 WebtoonResponse content = webtoonService.webtoonView(comment.contentIdx());
                 map.addAttribute("content", content);
             }
-//            case "book" -> {
-//                map.addAttribute("content", content);
-//            }
+            case "book" -> {
+                BookResponse content = bookService.bookView(comment.contentIdx());
+                map.addAttribute("content", content);
+            }
         }
         map.addAttribute("comment", comment);
         map.addAttribute("userSession", dto);
@@ -115,7 +118,7 @@ public class CommentController {
             HttpSession session
     ){
         UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
-        CommentResponse comment = commentService.findComment(commentIdx, dto.userIdx(), pageable);
+        CommentResponse comment = commentService.findComment(commentIdx, dto!=null? dto.userIdx():null, pageable);
         Map<String, Object> mv = new HashMap<>();
 
         mv.put("comment", comment.recomment());

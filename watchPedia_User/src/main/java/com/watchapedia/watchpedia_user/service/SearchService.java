@@ -24,7 +24,6 @@ public class SearchService {
         for(int i = 0; i < 5; i++){
             top5List.add(searchKeyList.get(i));
         }
-
         return top5List;
 
     }

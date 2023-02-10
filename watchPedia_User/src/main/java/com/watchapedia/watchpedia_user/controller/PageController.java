@@ -197,6 +197,8 @@ public class PageController {
         return new ModelAndView("/search/searchPerson");
     }
 
+//    @GetMapping("/search/contents/")
+
 
 
 }

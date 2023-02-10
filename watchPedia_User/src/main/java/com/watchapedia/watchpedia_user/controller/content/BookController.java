@@ -2,7 +2,9 @@ package com.watchapedia.watchpedia_user.controller.content;
 
 
 import com.watchapedia.watchpedia_user.model.dto.UserSessionDto;
+import com.watchapedia.watchpedia_user.model.dto.comment.CommentDto;
 import com.watchapedia.watchpedia_user.model.dto.content.BookDto;
+import com.watchapedia.watchpedia_user.model.entity.comment.Comment;
 import com.watchapedia.watchpedia_user.model.entity.content.ajax.Star;
 import com.watchapedia.watchpedia_user.model.network.response.PersonResponse;
 import com.watchapedia.watchpedia_user.model.network.response.comment.CommentResponse;
@@ -10,6 +12,7 @@ import com.watchapedia.watchpedia_user.model.network.response.content.BookRespon
 import com.watchapedia.watchpedia_user.model.network.response.content.StarResponse;
 import com.watchapedia.watchpedia_user.model.repository.UserRepository;
 import com.watchapedia.watchpedia_user.model.repository.comment.CommentRepository;
+import com.watchapedia.watchpedia_user.model.repository.comment.SpoilerRepository;
 import com.watchapedia.watchpedia_user.service.PersonService;
 import com.watchapedia.watchpedia_user.service.comment.CommentService;
 import com.watchapedia.watchpedia_user.service.content.BookService;
@@ -44,11 +47,14 @@ public class BookController {
     private final WatchService watchService;
     private final HateService hateService;
     private final CommentService commentService;
+    private final SpoilerRepository spoilerRepository;
 
     @GetMapping(path="/main")
     public String book(
-            ModelMap map
+            ModelMap map, HttpSession session
     ){
+        UserSessionDto userSessionDto = (UserSessionDto) session.getAttribute("userSession");
+        map.addAttribute("userSession", userSessionDto);
         List<BookDto> books = bookService.books();
         map.addAttribute("books", books);
         return "/book/bookMain";
@@ -105,10 +111,12 @@ public class BookController {
         boolean hasHate = false;
         Page<CommentResponse> commentList = commentService.commentList("book", book.idx(), dto != null ? dto.userIdx() : null, pageable);
         if (dto != null) {
-            for (CommentResponse comm : commentList) {
-                if (comm.user().getUserIdx() == dto.userIdx()) {
-                    hasComm = comm;
-                }
+            Comment comment = commentRepository.findByCommContentTypeAndCommContentIdxAndCommUserIdx(
+                    "book", book.idx(), userRepository.getReferenceById(dto.userIdx())
+            );
+            if(comment != null){
+                hasComm = CommentResponse.from(CommentDto.from(comment),spoilerRepository.findBySpoCommentIdx(comment.getCommIdx())!=null?true:false,
+                        0,0L,false);
             }
 
             hasWish = wishService.findWish("book", book.idx(), dto.userIdx());
@@ -163,6 +171,20 @@ public class BookController {
         map.addAttribute("book", book);
         map.addAttribute("userSession", dto);
         return "/book/detailInfoBook";
+    }
+
+    @GetMapping("/{bookIdx}/bookStory")
+    public String bookStory(
+            @PathVariable Long bookIdx,
+            ModelMap map,
+            HttpSession session
+    ){
+        UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
+        BookResponse book = bookService.bookView(bookIdx);
+
+        map.addAttribute("book", book);
+        map.addAttribute("userSession", dto);
+        return "/book/bookStory";
     }
 
 

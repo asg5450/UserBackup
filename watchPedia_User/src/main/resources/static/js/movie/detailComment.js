@@ -135,20 +135,21 @@ if(document.querySelector("a#login-idx")) {
     const hasCommentBtn2 = commentModal2.querySelectorAll("div.css-bgi4sk");
     hasCommentBtn2.item(0).addEventListener('click', commentEdit);
     hasCommentBtn2.item(1).addEventListener('click', commentDelete);
+}
 
-
-    let commentList = document.querySelectorAll("li.css-1fryc54");
-    document.addEventListener('click', (e) => {
-        if (e.target.parentElement.classList.contains("css-hy68ty")) {
+document.addEventListener('click', (e) => {
+    if (e.target.parentElement.classList.contains("css-hy68ty")) {
+        if(document.querySelector("#login-idx")){
             let comm = e.target.parentElement.parentElement;
             // 코멘트 좋아요 클릭
             let commentIdx = comm.querySelector("div.css-ob93md a").href.split("/comment/")[1];
             let likeSum = parseInt(comm.querySelector("em.like-sum").innerHTML);
+
             $.ajax({
                 url: '/comment/like/save',
                 headers: {'Content-Type': 'application/json;charset=UTF-8'},
                 data: JSON.stringify({           // HTTP 요청과 함께 서버로 보낼 데이터
-                    userIdx: loginIdx,
+                    userIdx: document.querySelector("#login-idx").title,
                     commentIdx: commentIdx
                 }),
                 type: 'POST',           // HTTP 요청 방식(GET, POST)
@@ -167,9 +168,9 @@ if(document.querySelector("a#login-idx")) {
                     alert("에러발생!")
                 }
             })
-        }
-    })
-}
+        }else{loginModalOn()}
+    }
+})
 
 let commentList = document.querySelectorAll("li.css-1fryc54");
 document.addEventListener('click', (e) => {
@@ -220,7 +221,6 @@ function addList() {
             loadingIcon.style.display='none'
         },
         success: function (data) {
-            console.log(data)
             for (let idx of data.commentList.content) {
                 if(idx.spoiler == true){
                     let appendLi = spoilerLi.cloneNode(true)

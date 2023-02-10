@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <thlogic>
     <attr sel="#th_searchKey" th:text="${searchKey} + '의 검색결과'"/>
-    <attr sel="#contentsHref" th:href="@{'/search/contents/'+${searchKey}}"></attr>location.href = `/search/contents/${e.innerText}`;
+    <attr sel="#contentsHref" th:href="@{'/search/contents/'+${searchKey}}"></attr>
     <attr sel="#personHref" th:href="@{'/search/person/'+${searchKey}}"></attr>
 
 

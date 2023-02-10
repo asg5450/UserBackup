@@ -2840,17 +2840,8 @@
     .css-1yarod2 :hover{
       background-color: #dfdfdf;
     }
-    .css-14ipivh{
-      display: none;
-    }
     .css-cwsoc3 {
       padding: 5px 0px;
-    }
-    #css-fxxino2{
-      display: none;
-    }
-    #css-fxxino1{
-      display: none;
     }
     .css-1qmg4jw {
       display: block;
@@ -2863,36 +2854,7 @@
     }
   </style>
   <!--jquery + javascript-->
-  <script type="text/javascript">
-    $(function(){
-      $("#input_text").on('input',function(){
-        if($("#input_text").val()==''){
-          $("#css-fxxino1").attr("style","display:block");
-          $("#css-fxxino2").attr("style","display:none");
-          $("#css-fxxino2").removeAttr("style").hide();
-        }
-        else{
-          $("#css-fxxino1").removeAttr("style").hide();
-          $("#css-fxxino2").show();
-        }
-      });
-      $("#input_text").on('focus',function(){
-        if($("#input_text").val()==''){
-          $("#css-fxxino1").attr("style","display:block");
-          $("#css-fxxino2").attr("style","display:none");
-          $("#css-fxxino2").removeAttr("style").hide();
-        }
-        else{
-          $("#css-fxxino1").removeAttr("style").hide();
-          $("#css-fxxino2").show();
-        }
-      });
-      $("#input_text").on('focusout',function(){
-        $("#css-fxxino1").removeAttr("style").hide();
-        $("#css-fxxino2").removeAttr("style").hide();
-      });
-    })
-  </script><!-- 필요한 CSS, JS 로드 -->
+  <!-- jQuery삭제 --><!-- 필요한 CSS, JS 로드 -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <!-- 검색창 스크립트, 스타일-->
@@ -3183,17 +3145,8 @@
     .css-1yarod2 :hover{
       background-color: #dfdfdf;
     }
-    .css-14ipivh{
-      display: none;
-    }
     .css-cwsoc3 {
       padding: 5px 0px;
-    }
-    #css-fxxino2{
-      display: none;
-    }
-    #css-fxxino1{
-      display: none;
     }
     .css-1qmg4jw {
       display: block;
@@ -3206,36 +3159,7 @@
     }
   </style>
   <!--jquery + javascript-->
-  <script type="text/javascript">
-    $(function(){
-      $("#input_text").on('input',function(){
-        if($("#input_text").val()==''){
-          $("#css-fxxino1").attr("style","display:block");
-          $("#css-fxxino2").attr("style","display:none");
-          $("#css-fxxino2").removeAttr("style").hide();
-        }
-        else{
-          $("#css-fxxino1").removeAttr("style").hide();
-          $("#css-fxxino2").show();
-        }
-      });
-      $("#input_text").on('focus',function(){
-        if($("#input_text").val()==''){
-          $("#css-fxxino1").attr("style","display:block");
-          $("#css-fxxino2").attr("style","display:none");
-          $("#css-fxxino2").removeAttr("style").hide();
-        }
-        else{
-          $("#css-fxxino1").removeAttr("style").hide();
-          $("#css-fxxino2").show();
-        }
-      });
-      $("#input_text").on('focusout',function(){
-        $("#css-fxxino1").removeAttr("style").hide();
-        $("#css-fxxino2").removeAttr("style").hide();
-      });
-    })
-  </script>
+
 
   <script defer src="/js/movie/mainScroll.js"></script>
   <link rel="icon" href="/image/favicon.png">
@@ -3251,22 +3175,6 @@
   <div class="css-5jq76">
     <div class="css-1xm32e0">
             <div th:replace="fragment/header::header"></div>
-      <header class="css-1xl5dyt">
-        <ul class="css-6v7b8v-VisualUl">
-          <li class="css-ysxfln">
-            <button class="css-q3jh7f-StylelessButton">영화</button>
-          </li>
-          <li class="css-ysxfln">
-            <button class="css-1ezx7y8-StylelessButton">TV</button>
-          </li>
-          <li class="css-ysxfln">
-            <button class="css-1ezx7y8-StylelessButton">책</button>
-          </li>
-          <li class="css-ysxfln">
-            <button class="css-1ezx7y8-StylelessButton">웹툰</button>
-          </li>
-        </ul>
-      </header>
       <section class="css-99klbh">
         <div class="css-k23wfl">
           <section class="css-7klu3x">
