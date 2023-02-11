@@ -17,19 +17,23 @@ import com.watchapedia.watchpedia_user.model.repository.comment.*;
 import com.watchapedia.watchpedia_user.model.repository.content.MovieRepository;
 import com.watchapedia.watchpedia_user.model.repository.content.ajax.StarRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class MovieService {
+
     final StarRepository starRepository;
     final MovieRepository movieRepository;
     @Transactional(readOnly = true)
     public MovieResponse movieView(Long movieIdx){
         MovieDto mov = movieRepository.findById(movieIdx).map(MovieDto::from).get();
+//        MovieDto mov = MovieDto.from(movieRepository.findByMovIdx(movieIdx));
         return MovieResponse.from(mov);
     }
 
@@ -77,15 +81,10 @@ public class MovieService {
         return result;
     }
 
-//    @Transactional(readOnly = true) //index 페이지 출력
-//    public List<Movie> searchMovies() {
-//        return movieRepository.findAll();
-//    }
 
     // 무비 메인페이지 별점 등록 및 출력
     @Transactional(readOnly = true)
     public List<MovieDto> movies() {
-        //빈 웹툰리스폰스 리스트
         List<MovieDto> result = new ArrayList<>();
 
         List<Movie> movieList = movieRepository.findAll();
@@ -100,8 +99,217 @@ public class MovieService {
             Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
             result.add(MovieDto.from(movie, avg));
         }
+
         return result;
     }
+
+    /* 별점 높은순 출력, 어느정도 인원이 평가해야(타임리프 적용) 0명이 평가한 경우 한명이 바로 5점을 주면
+        1등이 나오기 때문*/
+    @Transactional(readOnly = true)
+    public List<MovieDto> movieStar() {
+        //평균 구하기
+        List<MovieDto> result = new ArrayList<>();
+        // 평균점수가 최소 4.2 이상인 : 설정을 안할 경우 데이터가 없을경우 1점도 들어갈 수 있음
+        List<MovieDto> result2 = new ArrayList<>();
+        // 평가한 인원이 최소 5명인 : 평가자가 0명인 경우 처음 평가한 이가 5점을 주면 바로 최고 점수
+        List<MovieDto> result3 = new ArrayList<>();
+        List<Movie> movieStar = movieRepository.findAll();
+        for(Movie m : movieStar){//평균
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }// 최소 점수
+        for(MovieDto m : result){
+            if(m.avg() >= 4.2){
+                result2.add(m);
+            }
+        }// 최소 인원
+        for(MovieDto m : result2){
+            if(m.starList().size()>=3){
+                result3.add(m);
+            }
+        }// 평균 순으로 1위부터 뽑기
+        result3 = result3.stream().sorted(Comparator.comparing(MovieDto::avg)
+                .reversed()).collect(Collectors.toList());
+        return result3;
+    }
+
+    // 관리자 등록순 리스트 출력
+
+    @Transactional(readOnly = true)
+    public List<MovieDto> movieDtos() {
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieDtos = movieRepository.findAll(Sort.by(Sort.Direction.DESC,"movIdx"));
+
+        for(Movie m : movieDtos){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+
+    // 별점 매기지 않은 경우 : 내가 아직 보지 않은 영화 또는 평가하지 않은 영화
+    @Transactional(readOnly = true)
+    public List<MovieDto> movieZero() {
+        List<MovieDto> result = new ArrayList<>();
+        List<MovieDto> result2 = new ArrayList<>();
+
+        List<Movie> movieStar = movieRepository.findAll();
+
+        for(Movie m : movieStar){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        for(MovieDto m : result){
+            if(m.avg() == 0.0){
+                result2.add(m);
+            }
+        }
+        return result2;
+    }
+
+    //영화이름 기준 출력(나홀로 집에)
+    @Transactional(readOnly = true)
+    public List<MovieDto> movies2(String movieTitle) {
+        //빈 웹툰리스폰스 리스트
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieList2 = movieRepository.findByMovTitleContaining(movieTitle);
+
+        for(Movie m : movieList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+    //영화이름 기준 출력(아이언 맨)
+    @Transactional(readOnly = true)
+    public List<MovieDto> Irons(String movieTitle) {
+        //빈 웹툰리스폰스 리스트
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieList2 = movieRepository.findByMovTitleContaining(movieTitle);
+
+        for(Movie m : movieList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+
+    //최근개봉영화
+    @Transactional(readOnly = true)
+    public List<MovieDto> movies3() {
+        //빈 웹툰리스폰스 리스트
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieList2 = movieRepository.findAll(Sort.by(Sort.Direction.DESC,"movMakingDate"));
+
+        for(Movie m : movieList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+    // 나라기준 출력
+    @Transactional(readOnly = true)
+    public List<MovieDto> searchCountry(String country) {
+        //빈 웹툰리스폰스 리스트
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieList2 = movieRepository.findByMovCountryContaining(country);
+
+        for(Movie m : movieList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+    // 나라&장르 랜덤출력 하기위한 부분
+    @Transactional(readOnly = true)
+    public List<MovieDto> searchCri(String genre, String country) {
+        //빈 웹툰리스폰스 리스트
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieList2 = movieRepository.findByMovGenreContainingAndMovCountryContaining(genre, country);
+
+        for(Movie m : movieList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+
+    //장르기준 출력
+    @Transactional(readOnly = true)
+    public List<MovieDto> searchDrama(String genre) {
+        //빈 웹툰리스폰스 리스트
+        List<MovieDto> result = new ArrayList<>();
+
+        List<Movie> movieList2 = movieRepository.findByMovGenreContaining(genre);
+
+        for(Movie m : movieList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : m.getStar()){
+                sum += star.getStarPoint();
+                starCount = m.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(MovieDto.from(m, avg));
+        }
+        return result;
+    }
+
+
 
     //사용자-인물페이지--------------------------------------------------------------------------------------------------------
 
@@ -109,22 +317,24 @@ public class MovieService {
     public MovieResponse movieWithRole(Long movieIdx, Long perIdx){
         MovieDto mov = movieRepository.findById(movieIdx).map(MovieDto::fromis).get();
 
-        List<Star> starResponseList = starRepository.findByStarContentTypeAndStarContentIdx("영화", mov.movIdx());
+        List<Star> starResponseList = starRepository.findByStarContentTypeAndStarContentIdx("movie", mov.movIdx());
         int starCount= starResponseList.size();
-        int starPoint = 0;
+        float starPoint = 0;
         for(Star star : starResponseList){
             starPoint = starPoint + (star.getStarPoint()).intValue();
         }
         float starAvg = 0;
         if(starCount != 0){
-            starAvg = (float)Math.round(starPoint / starCount);
+            float avg = (starPoint / starCount);
+            float avg2 = (float) ((avg*100)/100.0);
+            starAvg = (float)(Math.round(avg2*10)/10.0);
         }
 
         boolean isWatcha = false;
         boolean isNetflix = false;
 
         try{
-            if(!mov.movWatch().isEmpty()){
+            if(mov.movWatch() != null){
                 String[] movieWatch = mov.movWatch().split(",");
                 for(String movWatch : movieWatch){
                     if(movWatch.contains("aHR0cHM6Ly93YXRjaGEuY29tL3dhdGNoL21")){

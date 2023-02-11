@@ -88,21 +88,124 @@ public class TvService {
         }
         return result;
     }
+
+    //
+    @Transactional(readOnly = true)
+    public List<TvDto> searchCountry(String country) {
+
+        List<TvDto> result = new ArrayList<>();
+
+        List<Tv> tvList2 = tvRepository.findByTvCountryContaining(country);
+
+        for(Tv t : tvList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : t.getStar()){
+                sum += star.getStarPoint();
+                starCount = t.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(TvDto.from(t, avg));
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public List<TvDto> searchTvDate(String tvMakingDate) {
+
+        List<TvDto> result = new ArrayList<>();
+
+        List<Tv> tvList2 = tvRepository.findByTvMakingDate(tvMakingDate);
+
+        for(Tv t : tvList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : t.getStar()){
+                sum += star.getStarPoint();
+                starCount = t.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(TvDto.from(t, avg));
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public List<TvDto> searchChannel(String tvChannel) {
+
+        List<TvDto> result = new ArrayList<>();
+
+        List<Tv> tvList2 = tvRepository.findByTvChannel(tvChannel);
+
+        for(Tv t : tvList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : t.getStar()){
+                sum += star.getStarPoint();
+                starCount = t.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(TvDto.from(t, avg));
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public List<TvDto> searchGenre(String tvGenre) {
+
+        List<TvDto> result = new ArrayList<>();
+
+        List<Tv> tvList2 = tvRepository.findByTvGenreContaining(tvGenre);
+
+        for(Tv t : tvList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : t.getStar()){
+                sum += star.getStarPoint();
+                starCount = t.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(TvDto.from(t, avg));
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public List<TvDto> searchTitle(String tvTitle) {
+
+        List<TvDto> result = new ArrayList<>();
+
+        List<Tv> tvList2 = tvRepository.findByTvTitleContaining(tvTitle);
+
+        for(Tv t : tvList2){
+            double sum = 0;
+            int starCount = 0;
+            for(Star star : t.getStar()){
+                sum += star.getStarPoint();
+                starCount = t.getStar().size();
+            }
+            Double avg = Math.round((sum / starCount) * 10.0) / 10.0;
+            result.add(TvDto.from(t, avg));
+        }
+        return result;
+    }
     //----------------------------------------------------------------------------------------------------
 
     @Transactional(readOnly = true)
     public TvResponse tvWithRole(Long tvIdx, Long perIdx){
         TvDto tv = tvRepository.findById(tvIdx).map(TvDto::from).get();
 
-        List<Star> starResponseList = starRepository.findByStarContentTypeAndStarContentIdx("Tv", tv.tvIdx());
+        List<Star> starResponseList = starRepository.findByStarContentTypeAndStarContentIdx("tv", tv.tvIdx());
         int starCount= starResponseList.size();
-        int starPoint = 0;
+        float starPoint = 0;
         for(Star star : starResponseList){
             starPoint = starPoint + (star.getStarPoint()).intValue();
         }
         float starAvg = 0;
         if(starCount != 0){
-            starAvg = (float) Math.round(starPoint / starCount);
+            float avg = (starPoint / starCount);
+            float avg2 = (float) ((avg*100)/100.0);
+            starAvg = (float)(Math.round(avg2*10)/10.0);
         }
 
         boolean isWatcha = false;

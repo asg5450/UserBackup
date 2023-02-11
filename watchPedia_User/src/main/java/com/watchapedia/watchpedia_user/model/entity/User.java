@@ -42,10 +42,17 @@ public class User {
     @Column(length =100)
     private String userLikeGenre;
 
+
     @ToString.Exclude
     @OrderBy("searchIdx ASC")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private final List<Search> searchList = new ArrayList<>();
+
+    @ToString.Exclude
+    @OrderBy("qnaRegDate DESC")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private final List<Qna> qnas = new ArrayList<>();
+
 
     public static User of(UserDto userDto) {
         return new User(
@@ -65,19 +72,5 @@ public class User {
                 userDto.userLikeActor(),
                 userDto.userLikeDirector(),
                 userDto.userLikeGenre());
-    }
-
-    public User(String userEmail, String userStatus, String userName) {
-        this.userEmail = userEmail;
-        this.userStatus = userStatus;
-        this.userName = userName;
-    }
-
-    public static User none(String email, String status, String name) {
-        return new User(
-                email,
-                status,
-                name
-        );
     }
 }

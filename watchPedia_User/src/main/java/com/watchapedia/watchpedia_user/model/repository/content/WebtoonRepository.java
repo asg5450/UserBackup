@@ -1,7 +1,6 @@
 package com.watchapedia.watchpedia_user.model.repository.content;
 
 
-import com.watchapedia.watchpedia_user.model.entity.content.Tv;
 import com.watchapedia.watchpedia_user.model.entity.content.Webtoon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

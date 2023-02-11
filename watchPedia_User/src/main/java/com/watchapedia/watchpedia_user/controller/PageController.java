@@ -4,6 +4,7 @@ import com.watchapedia.watchpedia_user.model.dto.UserSessionDto;
 import com.watchapedia.watchpedia_user.model.dto.comment.CommentDto;
 import com.watchapedia.watchpedia_user.model.dto.content.MovieDto;
 import com.watchapedia.watchpedia_user.model.dto.content.WebtoonDto;
+import com.watchapedia.watchpedia_user.model.entity.Person;
 import com.watchapedia.watchpedia_user.model.entity.content.Book;
 import com.watchapedia.watchpedia_user.model.entity.content.Movie;
 import com.watchapedia.watchpedia_user.model.entity.content.Tv;
@@ -15,6 +16,7 @@ import com.watchapedia.watchpedia_user.model.network.response.comment.CommentRes
 import com.watchapedia.watchpedia_user.model.network.response.content.MovieResponse;
 import com.watchapedia.watchpedia_user.model.network.response.content.StarAndCommentResponse;
 import com.watchapedia.watchpedia_user.model.network.response.content.StarResponse;
+import com.watchapedia.watchpedia_user.model.repository.PersonRepository;
 import com.watchapedia.watchpedia_user.model.repository.comment.CommentRepository;
 import com.watchapedia.watchpedia_user.model.repository.UserRepository;
 import com.watchapedia.watchpedia_user.model.repository.content.BookRepository;
@@ -36,10 +38,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("")
@@ -53,11 +52,29 @@ public class PageController {
     @GetMapping(path="/")
     public String movie(ModelMap map, HttpSession session, HttpServletRequest request){
         UserSessionDto userSessionDto = (UserSessionDto) session.getAttribute("userSession");
-
         map.addAttribute("userSession", userSessionDto);
         List<MovieDto> movies = movieService.movies();
         map.addAttribute("movies", movies);
-        return "movie/movieMain";
+
+        //String[] gerneList = {"액션","모험","예술","코미디","블랙코미디","로멘틱","다큐멘터리","드라마","코미디","시대극","멜로드라마","교육영화","판타지","누아르","공포","뮤지컬","미스터리","성인","멜로","로멘스","재난","좀비","전쟁","애니메이션","독립","스포츠","음악","뮤지컬","틴에이저","시트콤","가족","역사","독립","스포츠","음악","뮤지컬","로맨스"};
+        String[] gerneList = {"액션","액션","액션","코미디","코미디","코미디", "드라마","드라마"};
+        String[] countryList = {"한국","한국","한국","한국","미국","미국", "미국"};
+        Random rand = new Random();
+        String randomJerne = gerneList[rand.nextInt(gerneList.length)];
+        String randomCountry = countryList[rand.nextInt(countryList.length)];
+
+        map.addAttribute("randomCountry", randomCountry);
+        map.addAttribute("randomJerne",randomJerne);
+        map.addAttribute("movieZero", movieService.movieZero());
+        map.addAttribute("movieDtos", movieService.movieDtos());
+        map.addAttribute("movies2", movieService.movies2("나 홀로"));
+        map.addAttribute("movies3", movieService.movies3());
+        map.addAttribute("koreanMovies", movieService.searchCountry("한국"));
+        map.addAttribute("americanMovies", movieService.searchCountry("미국"));
+        map.addAttribute("dramas", movieService.searchDrama("드라마"));
+        map.addAttribute("cris", movieService.searchCri(randomJerne,randomCountry));
+        map.addAttribute("movieStar", movieService.movieStar());
+        return "/movie/movieMain";
     }
 
     //     별점 저장
@@ -87,8 +104,9 @@ public class PageController {
     private final TvRepository tvRepository;
     private final WebtoonRepository webtoonRepository;
     private final BookRepository bookRepository;
+    private final PersonRepository personRepository;
 
-    @GetMapping("/{contentType}/{contentIdx}/comments") // http://localhost:8787/movie/1/comments
+    @GetMapping("/{contentType}/{contentIdx}/comments") // http://localhost:8080/movie/1/comments
     public String commentList(
             @PathVariable String contentType,
             @PathVariable Long contentIdx,
@@ -170,7 +188,7 @@ public class PageController {
         System.out.println(movies);
 
         //TV addObject 만들기
-        List<Tv> tvs = tvRepository.findByTvTitleContaining(searchKey);
+            List<Tv> tvs = tvRepository.findByTvTitleContaining(searchKey);
         System.out.println(tvs);
 
         //책 addObject 만들기
@@ -194,11 +212,19 @@ public class PageController {
         System.out.println("searchPerson 페이지 컨트롤러에 잘 도착함");
         System.out.println("searchKey 매개변수로 받은 값 : " + searchKey);
 
-        return new ModelAndView("/search/searchPerson");
+        //검색어를 포함하는 이름의 인물List를 가져옴
+        List<Person> persons= personRepository.findByPerNameContaining(searchKey);
+
+        //인물 List에서 perPhoto가 비어있는 사람에게 기본이미지 제공
+        for(Person p : persons){
+            if(p.getPerPhoto() == null){
+                p.setPerPhoto("data:image/jpeg;base64,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");
+            }
+        }
+
+        return new ModelAndView("/search/searchPerson")
+                .addObject("searchKey", searchKey)
+                .addObject("persons", persons);
     }
-
-//    @GetMapping("/search/contents/")
-
-
 
 }

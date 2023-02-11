@@ -1,7 +1,6 @@
-package com.watchapedia.watchpedia_user.controller.content.ajax;
+package com.watchapedia.watchpedia_user.model.entity.content.ajax;
 
 import com.watchapedia.watchpedia_user.model.dto.SearchDto;
-import com.watchapedia.watchpedia_user.model.dto.UserDto;
 import com.watchapedia.watchpedia_user.model.entity.Search;
 import com.watchapedia.watchpedia_user.model.entity.User;
 import com.watchapedia.watchpedia_user.model.repository.SearchRepository;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/search")
+@RequestMapping("")
 @RequiredArgsConstructor
 public class SearchBarApiController {
 
@@ -70,10 +69,8 @@ public class SearchBarApiController {
     @GetMapping("/enter")
     public List<Search> searchEnter(@RequestParam("searchKey") String searchKey, @RequestParam("userIdx") String userId){
 
-
-        System.out.println("api/enter로 잘들어옴!");
-        System.out.println(searchKey);
         if(searchKey == null) return null;
+        System.out.println("api/enter로 잘들어옴!");
 
         //로그인 상태에서 '엔터' 검색 기능
         try{
@@ -101,14 +98,6 @@ public class SearchBarApiController {
             SearchDto searchDto = SearchDto.create(noneUser, searchKey);
             Search search = searchDto.toEntity(searchDto);
             searchRepository.save(search);
-
-
-
-            // 2. searchDto객체에 searchDto.create(user객체, 검색어) 리턴을 담음
-
-            // 3. Search Entity에 searchDto.toEntity()
-
-            // 4. searchRepository.save(Search Entity);
         }
         return null;
     }
@@ -116,7 +105,6 @@ public class SearchBarApiController {
 
     @GetMapping("/change")
     public List<Search> searchChange(@RequestParam("searchKey") String searchKey){
-        System.out.println("searchKey controller까지 도착! serchKey : " + searchKey);
 
         //검색어를 중복값 없이 전부 가져옴
         List<Search> relative = searchRepository.findBySearchContentGroupBy();
@@ -133,7 +121,4 @@ public class SearchBarApiController {
         }
         return result;
     }
-
-
-
 }

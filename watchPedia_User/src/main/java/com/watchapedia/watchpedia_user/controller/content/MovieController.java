@@ -14,6 +14,7 @@ import com.watchapedia.watchpedia_user.model.network.response.content.StarRespon
 import com.watchapedia.watchpedia_user.model.repository.comment.CommentRepository;
 import com.watchapedia.watchpedia_user.model.repository.UserRepository;
 import com.watchapedia.watchpedia_user.model.repository.comment.SpoilerRepository;
+import com.watchapedia.watchpedia_user.model.repository.content.ajax.StarRepository;
 import com.watchapedia.watchpedia_user.service.*;
 import com.watchapedia.watchpedia_user.service.comment.CommentService;
 import com.watchapedia.watchpedia_user.service.content.ajax.HateService;
@@ -31,10 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/movie")
@@ -51,6 +49,8 @@ public class MovieController {
 
     private final CommentService commentService;
     private final SpoilerRepository spoilerRepository;
+    private final StarRepository starRepository;
+
 
     @GetMapping(path="/main")
     public String movie(
@@ -61,8 +61,32 @@ public class MovieController {
         map.addAttribute("userSession", userSessionDto);
         List<MovieDto> movies = movieService.movies();
         map.addAttribute("movies", movies);
+
+        //String[] gerneList = {"액션","모험","예술","코미디","블랙코미디","로멘틱","다큐멘터리","드라마","코미디","시대극","멜로드라마","교육영화","판타지","누아르","공포","뮤지컬","미스터리","성인","멜로","로멘스","재난","좀비","전쟁","애니메이션","독립","스포츠","음악","뮤지컬","틴에이저","시트콤","가족","역사","독립","스포츠","음악","뮤지컬","로맨스"};
+        String[] gerneList = {"액션","액션","액션","코미디","코미디","코미디", "드라마","드라마"};
+        String[] countryList = {"한국","한국","한국","한국","미국","미국", "미국"};
+        Random rand = new Random();
+        String randomJerne = gerneList[rand.nextInt(gerneList.length)];
+        String randomCountry = countryList[rand.nextInt(countryList.length)];
+
+        map.addAttribute("movieStar", movieService.movieStar());
+        map.addAttribute("randomCountry", randomCountry);
+        map.addAttribute("randomJerne",randomJerne);
+        map.addAttribute("movieDtos", movieService.movieDtos());
+        map.addAttribute("movieZero", movieService.movieZero());
+        map.addAttribute("movies2", movieService.movies2("나 홀로"));
+        map.addAttribute("movies3", movieService.movies3());
+        map.addAttribute("koreanMovies", movieService.searchCountry("한국"));
+        map.addAttribute("americanMovies", movieService.searchCountry("미국"));
+        map.addAttribute("dramas", movieService.searchDrama("드라마"));
+        map.addAttribute("cris", movieService.searchCri(randomJerne,randomCountry));
+        System.out.println(movieService.movieStar()+"sdgjsdgskjgnwejfknefkj");
         return "/movie/movieMain";
     }
+
+
+
+
 
     @GetMapping("/{movieIdx}") // http://localhost:8080/movie/1
     public String movieDetail(
@@ -74,18 +98,9 @@ public class MovieController {
         UserSessionDto dto = (UserSessionDto) session.getAttribute("userSession");
 
         MovieResponse movie = movieService.movieView(movieIdx);
-
 //      평균 별점
         double sum = 0;
-        double avgStar = 0;
-        if(movie.starList().size() == 1){
-            avgStar = movie.starList().get(0).getStarPoint();
-        }else if(movie.starList().size() > 0){
-            for(int i=0; i<movie.starList().size(); i++){
-                sum += movie.starList().get(i).getStarPoint();
-            }
-            avgStar = Math.round((sum / movie.starList().size()) * 10.0) / 10.0;
-        }
+        double avgStar = Math.round(starRepository.findByContentStarAvg(movie.idx(),"movie") * 10) / 10.0;
 
         StarResponse hasStar = null;
         if(dto!=null) {
